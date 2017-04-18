@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import * as UserController from './controller';
-import {requireJwtAuth} from '../../utils/requireJwtAuth';
+import { requireJwtAuth } from '../../utils/requireJwtAuth';
 
 const routes = new Router();
 

@@ -1,3 +1,3 @@
 import choreRoutes from './routes';
 
-export {choreRoutes};
+export { choreRoutes };

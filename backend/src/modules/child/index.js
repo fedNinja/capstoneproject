@@ -1,3 +1,3 @@
 import childRoutes from './routes';
 
-export {childRoutes};
+export { childRoutes };

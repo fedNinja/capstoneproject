@@ -4,9 +4,9 @@ import middlewaresConfig from './config/middlewares';
 import path from 'path';
 var bodyParser = require('body-parser');
 var parserJson = bodyParser.json();
-import {userRoutes, choreRoutes, childRoutes} from './modules';
+import { userRoutes, choreRoutes, childRoutes } from './modules';
 
-const app =express();
+const app = express();
 /***
 Database
 **/

@@ -3,8 +3,8 @@ import { createToken } from './utils/createToken';
 import { sendUserInfo } from './utils/sendUserInfo';
 
 export const createUser = async (req, res) => {
-	const{userName, password, email} = req.body;
-	const user = await User.create({ userName, password, email});
+	const{ userName, password, email } = req.body;
+	const user = await User.create({ userName, password, email });
 	try{
 	return res.status(201).json({
 		success:true,
@@ -12,8 +12,7 @@ export const createUser = async (req, res) => {
 		token:`JWT ${ createToken(user) }`
 	});
 	}catch(e) {
-		console.log('e', e);
-	return res.status(400).json({error:true, message:'Error with User creation'});
+	return res.status(400).json({ error: true, message: 'Error with User creation' });
 	}
 }
 
@@ -27,17 +26,17 @@ export const getUsers = async (req, res) => {
 		return res.status(200).json({users: await User.findById(req.user.id)});
 
 		}catch(e) {
-		return res.status(e.status).json({error:true, message:'Error with to get user data'});
+		return res.status(e.status).json({ error: true, message: 'Error with to get user data' });
 	}
 }
 
 export const getUserById = async (req, res) => {
 		const userName = req.body.userName;
 	try{
-		return res.status(200).json({users: await User.findOne({userName})});
+		return res.status(200).json({ users: await User.findOne({ userName }) });
 
 		}catch(e) {
-		return res.status(e.status).json({error:true, message:'Error with getting user data'});
+		return res.status(e.status).json({ error:true, message: 'Error with getting user data' });
 	}
 
 }

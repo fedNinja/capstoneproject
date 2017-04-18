@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+
 import './App.css';
 
 class App extends Component {
@@ -12,11 +13,9 @@ class App extends Component {
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/signup">Signup</Link></li>
           </ul>
-          <hr className="lineDivider"/>
+          <hr className="lineDivider" />
         </div>
-
-        <p className="App-intro">
-        </p>
+        {this.props.children}
       </div>
     );
   }

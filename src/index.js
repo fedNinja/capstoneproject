@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
 import { createStore,  applyMiddleware } from 'redux';
 import axios from 'axios';
 import reducer from './reducers';
 import routes from './routes';
 
-const middleware = applyMiddleware(promise(), thunk, logger());
+const middleware = applyMiddleware(promise(), thunk, createLogger());
 
 axios.defaults.baseURL = 'http://localhost:8080';
 

@@ -1,0 +1,44 @@
+html {
+  background:  linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+  url("http://img-aws.ehowcdn.com/638x318/photos.demandstudios.com/getty/article/6/184/AA035991_XS.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.App-header {
+  padding: 15px;
+  color: #fff;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.appLogo{
+  display:inline-block;
+  font-size:30px;
+	margin:0;
+	font-family:'Unica One', 'tahoma', sans-serif;
+}
+
+.headerList{
+  display:inline-block;
+  float:right;
+  line-height:12px;
+}
+.headerList li{
+  list-style-type: none;
+  display:inline;
+  margin-right:23px;
+}
+.lineDivider{
+    border: none;
+    height: 1px;
+    color: #fff; /* old IE */
+    background-color: #fff; /* Modern Browsers */
+}

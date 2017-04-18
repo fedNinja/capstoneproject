@@ -1,0 +1,17 @@
+.listStyle{
+  list-style-type:none;
+  font-size:20px;
+  border:1px solid red;
+  color:red;
+  height:100px;
+  padding:10px;
+}
+
+.btnStyle{
+  float:right;
+  margin-top:20px;
+}
+.contentStyle{
+  display:inline-block;
+  margin-top:20px;
+}

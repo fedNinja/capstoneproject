@@ -1,34 +1,43 @@
+import {
+  LOGIN,
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  SIGNUP,
+  SIGNUP_ERROR,
+  SIGNUP_SUCCESS,
+} from '../actions/user';
+
 const initialState = {
   isLogged: false,
   info: {},
   isLoading: false,
-  error: null
-}
+  error: null,
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
-    case 'SIGNUP':
+    case LOGIN:
+    case SIGNUP:
       return {
         ...state,
-        isLoading: true
-      }
-    case 'LOGIN_SUCCESS':
-    case 'SIGNUP_SUCCESS':
+        isLoading: true,
+      };
+    case LOGIN_SUCCESS:
+    case SIGNUP_SUCCESS:
       return {
         ...state,
         isLoading: false,
         isLogged: true,
-        info: action.payload
-      }
-    case 'LOGIN_ERROR':
-    case 'SIGNUP_ERROR':
+        info: action.payload,
+      };
+    case LOGIN_ERROR:
+    case SIGNUP_ERROR:
       return {
         ...state,
         isLoading: false,
-        error: action.payload.message
-      }
+        error: action.payload.message,
+      };
     default:
       return state;
   }
-}
+};

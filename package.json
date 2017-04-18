@@ -4,16 +4,14 @@
   "private": true,
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
     "nodemon": "^1.11.0",
     "react-scripts": "0.9.5",
-    "redux-logger": "^3.0.1"
+    "redux-logger": "^3.0.1",
+    "rimraf": "^2.6.1"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -34,9 +32,12 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "devserver": "nodemon --exec babel-node -- backend/src/index.js",
+    "clean": "rimraf dist",
+    "devserver": "nodemon ./dist",
+    "server:watch": "babel -w --out-dir=dist ./backend/src",
+    "server:build": "babel --out-dir=dist ./backend/src",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && yarn run clean && yarn server:build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

@@ -18,6 +18,12 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const loginUser = async (req, res) => {
-  const { userName, password } = req.body;
+export const loginUser = async (req, res, next) => {
+  const user = req.user;
+  res.json({
+    success: true,
+    user: sendUserInfo(user),
+    token: `JWT ${createToken(user)}`
+  });
+  return next();
 };

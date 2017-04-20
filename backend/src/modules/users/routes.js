@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import * as UserController from './controller';
-import { requireJwtAuth } from '../../utils/requireJwtAuth';
+import { requireLoginAuth } from '../../utils/requireLoginAuth';
 
 const routes = new Router();
 
 routes.post('/user/signup', UserController.createUser);
-routes.post('/user/login', UserController.loginUser);
+routes.post('/user/login', requireLoginAuth, UserController.loginUser);
 
 export default routes;

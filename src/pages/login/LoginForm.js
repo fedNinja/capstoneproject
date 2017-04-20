@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../../components/flexgrid.css';
 import './style.css';
 
@@ -14,6 +15,7 @@ export default class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    console.log(`state ${JSON.stringify(this.state)}`);
     this.props.login(this.state);
   };
 
@@ -24,27 +26,27 @@ export default class LoginForm extends Component {
     return (
       <div className="centerItem">
         {errorMessage ? <p>{errorMessage}</p> : null}
-        <form onSubmit={this.onSubmit} className="centerALign">
+        <form onSubmit={this.onSubmit}>
           <div className="row">
-            <label className="col">UserName</label>
+            <label className="col formlbl">UserName</label>
             <input
               onChange={this.onChange}
               type="text"
               name="userName"
-              className="col"
+              className="col inputStyle"
             />
           </div>
           <div className="row">
-            <label className="control-label col">Password</label>
+            <label className="col formlbl">Password</label>
             <input
               onChange={this.onChange}
               type="password"
               name="password"
-              className="form-control col"
+              className="col inputStyle"
             />
           </div>
-          <div className="form-group row">
-            <button className="btn btn-primary btn-lg col">Login</button>
+          <div className="row btnAlign">
+            <button className="col">Login</button>
           </div>
         </form>
       </div>

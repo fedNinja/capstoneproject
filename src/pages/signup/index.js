@@ -8,10 +8,8 @@ class SignupPage extends Component {
   render() {
     const { signup } = this.props;
     return (
-      <div className="row">
-        <div className="col-md-4 col-md-offset-4">
+      <div>
           <SignupForm signup={signup} />
-        </div>
       </div>
     );
   }

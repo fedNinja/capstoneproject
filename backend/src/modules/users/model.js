@@ -1,4 +1,5 @@
 import mongoose, {Schema} from 'mongoose';
+import { hash, compare } from 'bcrypt';
 
 const UserSchema = new Schema({
 	userName:{
@@ -15,5 +16,28 @@ const UserSchema = new Schema({
 		required:true
   }
 });
+
+UserSchema.pre("save", function(next) {
+	if(!this.isModified("password")) {
+		return next();
+	}
+	const salt = 10;
+	hash(this.password, salt, (err, hashPwd) => {
+		if(err){
+			return next(err);
+		}
+		this.password = hashPwd;
+		return next();
+	});
+});
+
+UserSchema.methods.comparePassword = function(pwd, next) {
+	compare(pwd, this.password, (err, isMatch) => {
+		if(err){
+			return next(err);
+		}
+		return next(null, isMatch);
+	});
+}
 
 export default mongoose.model('User', UserSchema);

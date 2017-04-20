@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+
+
 import { addChoresRequest, assignChoreRequest } from '../../actions/addChoresAction';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import '../../components/flexgrid.css';
 import './style.css';
 
 
@@ -41,7 +44,7 @@ class AddChoresForm extends Component{
       const { updatedChore } = this.props;
       console.log({state:this.state});
     return(
-      <div>
+      <div className="centerItem">
         {errorMessage ? <p>{errorMessage}</p> : null}
         <form onSubmit={(e) => this.onSubmit(e) }>
           <FormGroup controlId="category">
@@ -58,7 +61,7 @@ class AddChoresForm extends Component{
             (chores.length > 0)
             ?
             <div>
-              <ul>
+              <ul className="renderedList">
                     {chores.map((item, i) => (
                       <li className="listStyle" key={i}>
                         <span className="contentStyle">{item.choreName}</span>

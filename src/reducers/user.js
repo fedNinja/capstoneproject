@@ -16,14 +16,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
     case SIGNUP:
+    case LOGIN:
       return {
         ...state,
         isLoading: true,
       };
-    case LOGIN_SUCCESS:
     case SIGNUP_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         isLoading: false,

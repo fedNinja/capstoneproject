@@ -5,11 +5,20 @@
   transform: translate(-50%, -50%);
 }
 
+.alignHeader{
+  text-align:center;
+  padding-bottom:20px;
+}
+
 .inputStyle {
   width:400px;
   height:25px;
   margin-bottom:10px;
   border-radius:5px;
+}
+.formlbl {
+  text-align:left;
+  padding-right:10px;
 }
 
 .btnAlign {
@@ -21,9 +30,5 @@
 
 .btnAlign button {
   border-radius: 5px;
-}
 
-.formlbl {
-  text-align: right;
-  padding-right:10px;
 }

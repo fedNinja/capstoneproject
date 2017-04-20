@@ -1,5 +1,6 @@
 import passport from 'passport';
-import {Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
+import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
+import LocalStrategy from 'passport-local';
 
 import User from '../model';
 import config from '../../../config/config';
@@ -26,4 +27,27 @@ const jwtStrategy = new JWTStrategy(jwtOpts, async(payload, done) => {
   }
 });
 
+const localOpts = {
+  usernameField: "userName"
+}
+const localStrategy = new LocalStrategy(localOpts, async(userName, password, next) => {
+  try{
+    const user = await User.findOne({userName});
+    if(!user){
+      return next(null, false);
+    }
+    return user.comparePassword(password, (err, isMatch) => {
+      if(err){
+        return next(err);
+      }else if(!isMatch){
+        return next(null, false);
+      }
+      return next(null, user);
+    });
+  } catch(e){
+    return next(e);
+  }
+});
+
 passport.use(jwtStrategy);
+passport.use(localStrategy);

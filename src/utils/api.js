@@ -8,9 +8,9 @@ class UserApi {
   }
 
   async login(args) {
+    console.log("Inside api utils");
     try {
       const { data } = await axios.post(`${this.path}/login`, args);
-
       return data;
     } catch (e) {
       return e;

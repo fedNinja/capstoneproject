@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import '../../components/flexgrid.css';
+import './style.css';
+
 export default class SignupForm extends Component {
   state = {
     userName: '',
@@ -18,48 +21,50 @@ export default class SignupForm extends Component {
 
   render() {
     return (
+      <div className="centerItem">
       <form onSubmit={this.onSubmit}>
-        <h1>Join our community!</h1>
-        <div className="form-group">
-          <label className="control-label">UserName</label>
+          <h1 className="alignHeader">Sign up for Gullak</h1>
+        <div className="row">
+          <label className="col formlbl">UserName</label>
           <input
             onChange={this.onChange}
             type="text"
             name="userName"
-            className="form-control"
+            className="col inputStyle"
           />
         </div>
-        <div className="form-group">
-          <label className="control-label">Password</label>
+        <div className="row">
+          <label className="col formlbl">Password</label>
           <input
             onChange={this.onChange}
             type="password"
             name="password"
-            className="form-control"
+            className="col inputStyle"
           />
         </div>
-        <div className="form-group">
-          <label className="control-label">passwordConfirmation</label>
+        <div className="row">
+          <label className="col formlbl">PasswordConfirmation</label>
           <input
             onChange={this.onChange}
             type="password"
             name="passwordConfirmation"
-            className="form-control"
+            className="col inputStyle"
           />
         </div>
-        <div className="form-group">
-          <label className="control-label">Email</label>
+        <div className="row">
+          <label className="col formlbl">Email</label>
           <input
             onChange={this.onChange}
             type="text"
             name="email"
-            className="form-control"
+            className="col inputStyle"
           />
         </div>
-        <div className="form-group">
-          <button className="btn btn-primary btn-lg">Sign up</button>
+        <div className="row btnAlign">
+          <button className="col">Sign up</button>
         </div>
       </form>
+    </div>
     );
   }
 }

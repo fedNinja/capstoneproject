@@ -8,7 +8,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-          <LoginForm login={login} />
+          <LoginForm login={this.props.login} />
       </div>
     );
   }

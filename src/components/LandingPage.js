@@ -40,11 +40,7 @@ class LandingPage extends Component {
             </p>
           </div>
           </section>
-          <section className="row contact">
-            <div class="col">
-              
-            </div>
-          </section>
+        
     </div>
     );
   }

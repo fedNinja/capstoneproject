@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { userSignupRequest } from '../../actions/user';
-
 export default class SignupForm extends Component {
   state = {
     userName: '',

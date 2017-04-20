@@ -1,20 +1,23 @@
-.app-intro {
-  background:  linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-  url("http://img-aws.ehowcdn.com/638x318/photos.demandstudios.com/getty/article/6/184/AA035991_XS.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
+.App1 {
+  background: url("http://www.kiplinger.com/kipimages/pages/13470.jpg") no-repeat center center;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              height: 100vh;
+              width: 100%;
 }
 
+
+
 .App-header {
-  padding: 15px;
-  color: #fff;
+  background-color:beige;
+  padding-top:10px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
 .App-intro {
@@ -22,25 +25,90 @@
 }
 
 .appLogo{
-  display:inline-block;
   font-size:30px;
-	margin:0;
+  padding-left:20px;
 	font-family:'Unica One', 'tahoma', sans-serif;
+}
+.subHeader{
+  font-size:20px;
+  text-align:center;
+  font-family:'Unica One', 'tahoma', sans-serif;
+  color: #634C23;
+}
+.appLogo a, .headerList li a{
+text-decoration:none;
+color:#634C23;
+cursor:pointer;
 }
 
 .headerList{
-  display:inline-block;
   float:right;
-  line-height:12px;
+  line-height:30px;
 }
 .headerList li{
   list-style-type: none;
   display:inline;
   margin-right:23px;
 }
+
 .lineDivider{
     border: none;
     height: 1px;
     color: #fff; /* old IE */
     background-color: #fff; /* Modern Browsers */
+}
+.About{
+  height: 200px;
+  width: 100%;
+  padding-top: 50px;
+}
+
+.aboutAlign {
+  padding-top:50px;
+  text-align: center;
+  background-color: #fff;
+  height:250px;
+  width:100%;
+  padding-bottom:20px;
+}
+
+.altColor{
+  background-color: #D9C9A6;/* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #fff , #D9C9A6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #fff, #D9C9A6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #fff, #D9C9A6); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #fff , #D9C9A6); /* Standard syntax */
+}
+
+.picAlign{
+  background: url("https://s-media-cache-ak0.pinimg.com/564x/b1/ee/6b/b1ee6b8310bcdffd58e9f7c92b8902e4.jpg") no-repeat center center;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              box-shadow: 3px 3px 5px 6px #ccc;
+              border-style: none;
+              margin-left: 50px;
+}
+
+.picAlign1 {
+  background: url("https://s-media-cache-ak0.pinimg.com/736x/3b/09/7d/3b097df64c1e878f29712e52a27ee8b2.jpg") no-repeat center center;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              box-shadow: 3px 3px 5px 6px #ccc;
+              border-style: none;
+              margin-right: 40px;
+}
+
+.picAlign2{
+  background: url("http://i.ebayimg.com/images/g/~FwAAOxyBC1R-9Q8/s-l300.jpg") no-repeat center center;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              box-shadow: 3px 3px 5px 6px #ccc;
+              border-style: none;
+              margin-left: 50px;
 }

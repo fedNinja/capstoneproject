@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { addChoresRequest, assignChoreRequest } from '../../actions/addChoresAction';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import Styles from './style.css';
+import './style.css';
 
 
 class AddChoresForm extends Component{

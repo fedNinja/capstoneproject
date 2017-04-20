@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import '../../components/flexgrid.css';
+import './style.css';
 
-import { userLoginRequest } from '../../actions/user';
+export default class LoginForm extends Component {
+  state = {
+    userName: '',
+    password: ''
+  };
 
-class LoginForm extends Component {
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   onSubmit = e => {
     e.preventDefault();
-    const userName = e.target.userName.value;
-    const password = e.target.password.value;
-    this.props.dispatch(userLoginRequest(userName, password));
+    this.props.login(this.state);
   };
 
   render() {
@@ -16,33 +22,32 @@ class LoginForm extends Component {
     const { userId } = this.props;
     console.log(userId);
     return (
-      <div>
+      <div className="centerItem">
         {errorMessage ? <p>{errorMessage}</p> : null}
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label className="control-label">UserName</label>
-            <input type="text" name="userName" className="form-control" />
+        <form onSubmit={this.onSubmit} className="centerALign">
+          <div className="row">
+            <label className="col">UserName</label>
+            <input
+              onChange={this.onChange}
+              type="text"
+              name="userName"
+              className="col"
+            />
           </div>
-          <div className="form-group">
-            <label className="control-label">Password</label>
-            <input type="password" name="password" className="form-control" />
+          <div className="row">
+            <label className="control-label col">Password</label>
+            <input
+              onChange={this.onChange}
+              type="password"
+              name="password"
+              className="form-control col"
+            />
           </div>
-          <div className="form-group">
-            <button className="btn btn-primary btn-lg">Login</button>
+          <div className="form-group row">
+            <button className="btn btn-primary btn-lg col">Login</button>
           </div>
         </form>
       </div>
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    name: state.logIn.userName,
-    password: state.logIn.password,
-    errorMessage: state.logIn.errorMessage,
-    userId: state.logIn.userId,
-  };
-};
-
-export default connect(mapStateToProps)(LoginForm);

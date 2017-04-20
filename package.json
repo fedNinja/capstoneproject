@@ -9,6 +9,7 @@
     "eslint": "^3.19.0",
     "eslint-config-equimper": "^1.6.2",
     "nodemon": "^1.11.0",
+    "react-addons-css-transition-group": "^15.5.2",
     "react-scripts": "0.9.5",
     "redux-logger": "^3.0.1",
     "rimraf": "^2.6.1"

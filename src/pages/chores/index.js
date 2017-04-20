@@ -15,7 +15,4 @@ class AddChoresPage extends Component {
   }
 }
 
-AddChoresPage.propTypes = {
-  addChoresRequest: React.PropTypes.func.isRequired,
-};
 export default connect(null, { addChoresRequest })(AddChoresPage);

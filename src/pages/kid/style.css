@@ -1,0 +1,34 @@
+.centerItem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alignHeader{
+  text-align:center;
+  padding-bottom:20px;
+}
+
+.inputStyle {
+  width:400px;
+  height:25px;
+  margin-bottom:10px;
+  border-radius:5px;
+}
+.formlbl {
+  text-align:left;
+  padding-right:10px;
+}
+
+.btnAlign {
+    height: 30px;
+    margin: 0;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.btnAlign button {
+  border-radius: 5px;
+
+}

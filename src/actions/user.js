@@ -2,6 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 import { User } from '../utils/api';
+import setAuthToken from '../utils/setAuthToken';
 
 /**
 |--------------------------------------------------
@@ -15,6 +16,10 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const SIGNUP = 'SIGNUP';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+export const userid = 'userid';
+export const username = 'username';
+export const token = 'token';
+export const email = 'email';
 
 /**
 |--------------------------------------------------
@@ -40,13 +45,16 @@ export function login(args) {
   console.log(`inside login action ${JSON.stringify(args)}`);
   return async dispatch => {
     try {
-      console.log("Inside try block");
       const data = await User.login(args);
-      console.log(data);
+			localStorage.setItem(userid, data.user.id);
+      localStorage.setItem(username, data.user.userName);
+      localStorage.setItem(email, data.user.email);
+      localStorage.setItem(token, data.token);
+      setAuthToken(data.token);
+      //console.log(jwt.decode(data.token));
       await dispatch(loginSuccess(data));
-      browserHistory.push('/addchores');
+      browserHistory.push('/home');
     } catch (e) {
-      console.log("error");
       dispatch(loginError(e));
     }
   };

@@ -6,7 +6,14 @@ import './flexgrid.css';
 import './marquee.css';
 
 class NavigationBar extends Component{
+
+  logout(e) {
+    e.preventDefault();
+    localStorage.clear();
+  }
+
   render(){
+
     return(
       <div className="App-header">
       <div className="row">
@@ -18,8 +25,20 @@ class NavigationBar extends Component{
               <li><Link to="/assign">Assign</Link></li>
               <li><Link to="/track">Track</Link></li>
               <li><Link to="/reward">Reward</Link></li>
-              <li><Link to="/signup">Sign up</Link></li>
-              <li><Link to="/login">Login</Link></li>
+              <li>
+                {(localStorage.length>0) ?
+                  (`Hello ${localStorage.getItem("username")}`)
+                :
+                    <Link to="/signup">Sign up</Link>
+                }
+              </li>
+              <li>
+                {(localStorage.length>0) ?
+                    <a href="#" onClick={this.logout.bind(this)}>Logout</a>
+                :
+                  <Link to="/login">Login</Link>
+                }
+                </li>
               <li><Link to="/contact">Contact us</Link></li>
             </ul>
           </div>

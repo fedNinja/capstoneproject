@@ -78,6 +78,17 @@ cursor:pointer;
   background: linear-gradient(to right, #fff , #D9C9A6); /* Standard syntax */
 }
 
+.picDevice{
+  background: url("http://strongautomotive.com/wp-content/uploads/2015/01/responsive-design-phone-desktop-tablet.png") no-repeat center center;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              box-shadow: 3px 3px 5px 6px #ccc;
+              border-style: none;
+              margin-left: 50px;
+}
+
 .picAlign{
   background: url("https://s-media-cache-ak0.pinimg.com/564x/b1/ee/6b/b1ee6b8310bcdffd58e9f7c92b8902e4.jpg") no-repeat center center;
               -webkit-background-size: cover;

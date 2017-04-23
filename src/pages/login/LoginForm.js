@@ -15,7 +15,6 @@ export default class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(`state ${JSON.stringify(this.state)}`);
     this.props.login(this.state);
   };
 

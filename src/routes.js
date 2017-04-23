@@ -6,6 +6,9 @@ import LandingPage from './components/LandingPage';
 import SignupPage from './pages/signup';
 import LoginPage from './pages/login';
 import AddChoresPage from './pages/chores';
+import HomePage from './pages/home';
+import AddKidPage from './pages/kid';
+
 
 export default (
   <Route path="/" component={App}>
@@ -13,5 +16,7 @@ export default (
     <Route path="/signup" component={SignupPage} />
     <Route path="/login" component={LoginPage} />
     <Route path="/addchores" component={AddChoresPage} />
+    <Route path="/home" component={HomePage} />
+    <Route path="/addkid" component={AddKidPage} />
   </Route>
 );

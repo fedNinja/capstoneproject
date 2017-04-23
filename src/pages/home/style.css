@@ -1,0 +1,89 @@
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+.homeDiv {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  transform: translate(-30%,-30%);
+}
+
+
+.centerItem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alignHeader{
+  text-align:center;
+  padding-bottom:20px;
+}
+
+.inputStyle {
+  width:400px;
+  height:25px;
+  margin-bottom:10px;
+  border-radius:5px;
+}
+.formlbl {
+  text-align:left;
+  padding-right:10px;
+}
+
+.btnAlign {
+    height: 30px;
+    margin: 0;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.btnAlign button {
+  border-radius: 5px;
+}
+
+.avatar {
+    height: 100px;
+    background: url(https://www.iberiabank.com/globalassets/bio-photos2/bio-placeholder.png) no-repeat center center;
+    background-size: cover;
+    box-shadow: 3px 3px 3px 3px #ccc;
+    border: 1px solid grey;
+    width: 100px;
+    border-radius: 50%;
+    float: left;
+}
+
+.leftAlign{
+  position: absolute;
+  left:20%;
+  top:20%;
+}
+
+.detailsDiv {
+  float: left;
+  margin-left:100px;
+}
+
+.addBtn {
+    height: 100px;
+    background: url("https://image.freepik.com/free-icon/add-button-with-plus-symbol-in-a-black-circle_318-48599.jpg"
+) no-repeat center center;
+    background-size: cover;
+    box-shadow: 3px 3px 3px 3px #ccc;
+    border: 1px solid grey;
+    width: 100px;
+    border-radius: 50%;
+    margin-top:30%;
+}
+
+.dataUser{
+  padding:10px;
+}
+
+.clearFix {
+  clear: both;
+}

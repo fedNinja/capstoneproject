@@ -2,6 +2,7 @@ import Child from './model';
 import mongoose from 'mongoose';
 
 export const addChild = async(req,res) => {
+	console.log(req.body);
 	const{ parent, userName, password, dateOfBirth } = req.body;
 	const newChild = new Child({ parent, userName, password, dateOfBirth });
 	try{
@@ -13,8 +14,8 @@ export const addChild = async(req,res) => {
 
 export const getChilds = async (req, res) => {
 	try{
-		return res.status(200).json({ childs: await Child.find({}) });
-		}catch(e) {
+		return res.status(200).json({ childs: await Child.find({ parent:req.params.parent }) });
+		} catch(e) {
 		return res.status(e.status).json({ error: true, message: 'Error with to get child data' });
 	}
 }

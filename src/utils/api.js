@@ -20,7 +20,6 @@ class UserApi {
   async signup(args) {
     try {
       const { data } = await axios.post(`${this.path}/signup`, args);
-
       return data;
     } catch (e) {
       return e;

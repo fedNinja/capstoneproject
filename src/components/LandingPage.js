@@ -10,17 +10,7 @@ class LandingPage extends Component {
           <section className="col App1">
           </section>
         </div>
-        <section className="row aboutAlign">
-          <div className="col About">
-            <h3>About us</h3>
-            <p>Wanted to build something where kids can learn how to be more responsible with money in early age. </p>
-            <p>Something which is compatible on all devices.</p>
-            <p>User can view site from anywhere</p>
-        </div>
-        <div className="col picDevice">
-        </div>
-        </section>
-          <section className="row aboutAlign">
+          <section className="row aboutAlign" id="assign">
             <div className="col picAlign">
             </div>
             <div className="col About">
@@ -32,7 +22,7 @@ class LandingPage extends Component {
 
           </div>
           </section>
-          <section className="row aboutAlign">
+          <section className="row aboutAlign" id="track">
             <div className="col About">
               <h3>Track </h3>
               <p>Keep track of the chores on daily/hourly basis.</p>
@@ -42,7 +32,7 @@ class LandingPage extends Component {
             <div className="col picAlign1">
             </div>
           </section>
-          <section className="row aboutAlign">
+          <section className="row aboutAlign" id="reward">
             <div className="col picAlign2">
             </div>
             <div className="col About">

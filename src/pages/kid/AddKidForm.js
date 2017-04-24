@@ -5,6 +5,7 @@ import './style.css';
 
 export default class AddKidForm extends Component {
   state = {
+    parent: localStorage.getItem("userid"),
     childName: '',
     dateOfBirth: '',
     userName: '',
@@ -56,8 +57,9 @@ export default class AddKidForm extends Component {
           <label className="col formlbl">Date of Birth</label>
           <input
             onChange={this.onChange}
-            type="password"
-            name="passwordConfirmation"
+            type="text"
+            name="dateOfBirth"
+            placeholder="mm/dd/yyyy"
             className="col inputStyle"
           />
         </div>

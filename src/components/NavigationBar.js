@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+import LandingPage from './LandingPage';
 
 import './App.css';
 import './flexgrid.css';
@@ -10,6 +12,7 @@ class NavigationBar extends Component{
   logout(e) {
     e.preventDefault();
     localStorage.clear();
+    browserHistory.push('/');
   }
 
   render(){
@@ -22,9 +25,9 @@ class NavigationBar extends Component{
           </div>
           <div className="col">
             <ul className="headerList headerJustify">
-              <li><Link to="/assign">Assign</Link></li>
-              <li><Link to="/track">Track</Link></li>
-              <li><Link to="/reward">Reward</Link></li>
+              <a className="hashLink" href="#assign"><li>Assign</li></a>
+              <a className="hashLink" href="#track"><li>Track</li></a>
+              <a className="hashLink" href="#reward"><li>Reward</li></a>
               <li>
                 {(localStorage.length>0) ?
                   (`Hello ${localStorage.getItem("username")}`)

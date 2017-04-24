@@ -2,6 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 import { User } from '../utils/api';
+import { Child } from '../utils/childapi';
 import setAuthToken from '../utils/setAuthToken';
 
 /**
@@ -42,16 +43,20 @@ function loginError(payload) {
 }
 
 export function login(args) {
-  console.log(`inside login action ${JSON.stringify(args)}`);
+  console.log(args);
   return async dispatch => {
     try {
       const data = await User.login(args);
+      const kids = await Child.getChildren(data.user.id);
 			localStorage.setItem(userid, data.user.id);
       localStorage.setItem(username, data.user.userName);
       localStorage.setItem(email, data.user.email);
       localStorage.setItem(token, data.token);
       setAuthToken(data.token);
-      //console.log(jwt.decode(data.token));
+      console.log(data);
+      console.log(kids)
+      data.children = kids.childs;
+      console.log(data);
       await dispatch(loginSuccess(data));
       browserHistory.push('/home');
     } catch (e) {

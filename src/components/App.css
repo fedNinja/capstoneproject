@@ -18,6 +18,11 @@
   z-index: 100;
 }
 
+.hashLink{
+  text-decoration: none;
+  color: #634C23;
+}
+
 .App-intro {
   font-size: large;
 }

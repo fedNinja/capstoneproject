@@ -11,7 +11,7 @@ const RecieveData= (chores) => {
 export function addChoresRequest(category) {
   return dispatch => {
     console.log(`Inside client, ${category}`);
-    return axios.get('api/chorecategory/'+category)
+    return axios.get('/chorecategory/'+category)
       .then((res) => {
         dispatch({ type:category, payload:res.data});
       }
@@ -22,7 +22,7 @@ export function addChoresRequest(category) {
 
 export function assignChoreRequest(childId, chore) {
   return dispatch => {
-    return axios.put(('api/assignChores/'+ childId), {chore})
+    return axios.put(('/assignChores/'+ childId), {chore})
       .then((res) => {
         console.log(`Inside res ${res}`);
         dispatch(RecieveData(res.data));

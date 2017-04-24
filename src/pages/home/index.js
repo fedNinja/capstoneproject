@@ -5,9 +5,11 @@ import {Link} from 'react-router';
 import './style.css';
 
 
-export default class HomePage extends Component {
+class HomePage extends Component {
   render() {
+    const { children } = this.props;
     console.log(localStorage.getItem("username"));
+    console.log(children);
     return (
       <div className="homeDiv">
           <div className="avatar">
@@ -16,6 +18,17 @@ export default class HomePage extends Component {
             <p className="dataUser">User name: {localStorage.getItem("username")}</p>
             <p className="dataUser">Email: {localStorage.getItem("email")}</p>
           </div>
+          <ul className="listKids">
+            {children.map((child, i) => (
+              <li key={i} className="clearFix">
+                  <Link to="/addchores">
+                    <div className="avatar imgAlign">
+                    </div>
+                  </Link>
+                <div className="detailsDiv imgAlign textAlign"> Child Name: {child.userName} </div>
+            </li>
+            ))}
+          </ul>
           <div className="clearFix">
             <Link to="/addkid"><button className="addBtn"></button></Link>
           </div>
@@ -24,4 +37,12 @@ export default class HomePage extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    children:state.user.info.children
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);
 //export default connect(undefined, { signup });

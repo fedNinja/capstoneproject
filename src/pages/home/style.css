@@ -6,9 +6,9 @@
 
 .homeDiv {
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 30%;
-  transform: translate(-30%,-30%);
+  transform: translate(-40%,-30%);
 }
 
 
@@ -77,7 +77,6 @@
     border: 1px solid grey;
     width: 100px;
     border-radius: 50%;
-    margin-top:30%;
 }
 
 .dataUser{
@@ -86,4 +85,17 @@
 
 .clearFix {
   clear: both;
+}
+
+.listKids {
+  list-style-type: none;
+}
+
+.imgAlign {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.textAlign {
+  padding-top:40px;
 }

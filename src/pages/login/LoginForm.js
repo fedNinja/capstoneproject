@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import '../../components/flexgrid.css';
 import './style.css';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   state = {
     userName: '',
     password: ''
@@ -21,7 +22,7 @@ export default class LoginForm extends Component {
   render() {
     const { errorMessage } = this.props;
     const { userId } = this.props;
-    console.log(userId);
+    console.log(errorMessage);
     return (
       <div className="centerItem">
         {errorMessage ? <p>{errorMessage}</p> : null}
@@ -52,3 +53,11 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    errorMessage:state.user.error
+  }
+}
+
+export default connect(mapStateToProps)(LoginForm);

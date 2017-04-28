@@ -8,6 +8,7 @@ import LoginPage from './pages/login';
 import AddChoresPage from './pages/chores';
 import HomePage from './pages/home';
 import AddKidPage from './pages/kid';
+import ApproveRejectPage from './pages/approve';
 
 
 export default (
@@ -15,8 +16,9 @@ export default (
     <IndexRoute component={LandingPage} />
     <Route path="/signup" component={SignupPage} />
     <Route path="/login" component={LoginPage} />
-    <Route path="/addchores" component={AddChoresPage} />
+    <Route path="/addchores(/:childId)" component={AddChoresPage} />
     <Route path="/home" component={HomePage} />
     <Route path="/addkid" component={AddKidPage} />
+    <Route path="/approve" component={ApproveRejectPage} />
   </Route>
 );

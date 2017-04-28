@@ -21,7 +21,7 @@ class HomePage extends Component {
           <ul className="listKids">
             {children.map((child, i) => (
               <li key={i} className="clearFix">
-                  <Link to="/addchores">
+                  <Link to={"/addchores/"+child._id}>
                     <div className="avatar imgAlign">
                     </div>
                   </Link>
@@ -45,4 +45,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(HomePage);
-//export default connect(undefined, { signup });

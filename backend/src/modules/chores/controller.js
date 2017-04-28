@@ -1,11 +1,13 @@
 import Chore from './model';
 
 export const addChores = async (req, res) => {
-	const{ choreName, category, allowance } = req.body;
-	const newChore = new Chore({ choreName, category, allowance });
+	const{ choreName, category, allowance, imgurl } = req.body;
+	const newChore = new Chore({ choreName, category, allowance, imgurl });
 	try{
+		console.log(newChore.imgurl);
 	return res.status(201).json({ chore: await newChore.save() });
 	}catch(e) {
+		console.log(e);
 	return res.status(400).json({ error: true, message:'Error with Chore creation' });
  }
 }

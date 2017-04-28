@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 import { addChoresRequest, assignChoreRequest } from '../../actions/addChoresAction';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import DayCarousel from '../../components/DayCarousel';
 import '../../components/flexgrid.css';
 import './style.css';
 
@@ -35,25 +35,28 @@ class AddChoresForm extends Component{
           addedChores:this.state.addedChores.concat([j])
         })
 
-      this.props.dispatch(assignChoreRequest("58e2e6e73b191d315d1d2273", chores));
+      this.props.dispatch(assignChoreRequest(this.props.childId, chores));
     }
 
     render(){
+      const { childId } = this.props;
       const { errorMessage } = this.props;
       const { chores } = this.props;
       const { updatedChore } = this.props;
-      console.log({state:this.state});
-    return(
-      <div className="centerItem">
-        {errorMessage ? <p>{errorMessage}</p> : null}
+      const { day, weekDays } = this.props.dayCarousel;
+      return(
+        <div className="centerItem">
+          {weekDays[day]}
+          {errorMessage ? <p>{errorMessage}</p> : null}
         <form onSubmit={(e) => this.onSubmit(e) }>
-          <FormGroup controlId="category">
+          <FormGroup controlId="category" className="centerAlign">
               <ControlLabel>Select Chore Category</ControlLabel>
               <FormControl componentClass="select" placeholder="select" onChange={(e) => this.onChange(e)}>
                 <option value="select">select </option>
                 <option value="Household_Chores">Household Chores</option>
                 <option value="Mealtime_Chores">Mealtime Chores</option>
               </FormControl>
+              <DayCarousel />
           </FormGroup>
         </form>
         <div>
@@ -64,10 +67,12 @@ class AddChoresForm extends Component{
               <ul className="renderedList">
                     {chores.map((item, i) => (
                       <li className="listStyle" key={i}>
-                        <span className="contentStyle">{item.choreName}</span>
+                        <hr className="partitionStyle" />
+                        <img className="imgStyle" src={item.imgurl} />
+                        <p className="contentStyle">{item.choreName}</p>
                         {(this.state.addedChores.indexOf(i) !== -1)
                           ?
-                          <span>Added</span>
+                          <span className="msgAlign">Added</span>
                           :
                           <button className="btn btn-primary btn-md btnStyle" id={"add"+i} onClick={(e) => this.onClick(e, i)}>Add Chore</button>
                         }
@@ -91,10 +96,11 @@ AddChoresForm.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    category:state.chores.category,
-    chores:state.chores.chores,
-    errorMessage:state.chores.errorMessage,
-    updatedChore:state.chores.updatedChore
+    category: state.chores.category,
+    chores: state.chores.chores,
+    errorMessage: state.chores.errorMessage,
+    updatedChore: state.chores.updatedChore,
+    dayCarousel: state.dayCarousel
   }
 }
 

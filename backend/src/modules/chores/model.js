@@ -15,7 +15,8 @@ const ChoresSchema = new Schema({
   allowance:{
     type:Number,
     required:true
-  }
+  },
+	imgurl: String
 });
 
 export default mongoose.model('Chore', ChoresSchema);

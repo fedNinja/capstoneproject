@@ -8,15 +8,23 @@ export default class SignupForm extends Component {
     userName: '',
     email: '',
     password: '',
+    error: {}
   };
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.signup(this.state);
+    if(!this.state.userName){
+
+    }
+    else {
+      this.props.signup(this.state);
+    }
+
   };
 
   render() {

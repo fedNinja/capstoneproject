@@ -42,6 +42,22 @@ export const assignChores = function(req, res) {
 		};
 	}
 
+
+/*	export const assignChores = function(req, res) {
+		const childId = req.params.childId;
+		let chores = req.body.chore;
+		let choresArray = [];
+		let ChId, day, status;
+		for(var key in chores){
+			if(chores.hasOwnProperty(key)){
+				ChId = chores[key].ChId;
+				day = chores[key].day;
+				status = chores[key].status;
+				choresArray.push([ChId, day, status]);
+			};
+		}
+*/
+
 	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: { $each: choresArray }}}, { new: true}, function(err, obj){
       if(err){
         res.status(500).send(err);

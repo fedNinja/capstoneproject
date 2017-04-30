@@ -28,3 +28,15 @@ export const getChoresByCategory = async (req, res) => {
   return res.status(e.status).json({ error: true, message:'Error with getting user data' });
   }
 }
+
+export const deleteById = function(req, res) {
+	Chore
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(() => {
+			res.status(204).json({ message: 'successfully removed' });
+		})
+		.catch(err => {
+			res.status(500).json({ error: 'something went terribly wrong' });
+		});
+}

@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactSwipe from 'react-swipe';
 import { connect } from 'react-redux';
 
 import { dayPlus, dayMinus } from '../actions/dayCarousel';

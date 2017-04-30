@@ -24,10 +24,11 @@ class AddChoresForm extends Component{
     }
 
     onClick(e, j) {
+      const { day, weekDays } = this.props.dayCarousel;
       const chores = [
           {
             ChId:this.props.chores[j]._id,
-            day:"Friday",
+            day:weekDays[day],
             status:false
           }
         ]

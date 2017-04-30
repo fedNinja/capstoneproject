@@ -2,6 +2,19 @@ import User from './model';
 import { createToken } from './utils/createToken';
 import { sendUserInfo } from './utils/sendUserInfo';
 
+
+export const deleteById = function(req, res) {
+	User
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(() => {
+			res.status(204).json({ message: 'successfully removed' });
+		})
+		.catch(err => {
+			res.status(500).json({ error: 'something went terribly wrong' });
+		});
+}
+
 export const createUser = async (req, res) => {
   const { userName, password, email } = req.body;
   const user = await User.create({ userName, password, email });

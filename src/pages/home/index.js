@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 
 import './style.css';
 
@@ -38,9 +38,8 @@ class HomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
-    children:state.user.info.children
+    children:state.user.info.children,
   }
 }
 

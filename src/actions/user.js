@@ -47,18 +47,30 @@ export function login(args) {
   return async dispatch => {
     try {
       const data = await User.login(args);
-      const kids = await Child.getChildren(data.user.id);
+      console.log()
 			localStorage.setItem(userid, data.user.id);
       localStorage.setItem(username, data.user.userName);
       localStorage.setItem(email, data.user.email);
       localStorage.setItem(token, data.token);
       setAuthToken(data.token);
-      console.log(data);
-      console.log(kids)
-      data.children = kids.childs;
-      console.log(data);
-      await dispatch(loginSuccess(data));
-      browserHistory.push('/home');
+      if(data.user.role == 'parent') {
+        const kids = await Child.getChildren(data.user.id);
+        data.children = kids.childs;
+        await dispatch(loginSuccess(data));
+        console.log(data);
+        browserHistory.push('/home');
+      }
+      else {
+        const assignedChores = await Child.getAssignedChores(data.user.userName);
+        console.log(assignedChores);
+        data.assignedChores = assignedChores.childs[0].assignedChores;
+        const chores = await axios.get('/chores');
+        console.log(chores);
+        data.chores = chores.data.chores;
+        await dispatch(loginSuccess(data));
+        console.log(data);
+        browserHistory.push('/completechore');
+      }
     } catch (e) {
       dispatch(loginError(e));
     }
@@ -81,6 +93,7 @@ export function login(args) {
 }*/
 
 export function signup(args) {
+  args.role = 'parent';
   return dispatch => {
     dispatch({ type: SIGNUP });
     return axios

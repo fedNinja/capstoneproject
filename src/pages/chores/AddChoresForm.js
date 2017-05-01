@@ -19,7 +19,6 @@ class AddChoresForm extends Component{
     onChange(e) {
       e.preventDefault();
       const category = e.target.value;
-      console.log(category);
       this.props.dispatch(addChoresRequest(category));
     }
 
@@ -47,7 +46,6 @@ class AddChoresForm extends Component{
       const { day, weekDays } = this.props.dayCarousel;
       return(
         <div className="centerItem">
-          {weekDays[day]}
           {errorMessage ? <p>{errorMessage}</p> : null}
         <form onSubmit={(e) => this.onSubmit(e) }>
           <FormGroup controlId="category" className="centerAlign">

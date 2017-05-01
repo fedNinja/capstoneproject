@@ -2,6 +2,7 @@ import axios from 'axios';
 import {browserHistory} from 'react-router';
 import { Child } from '../utils/childapi';
 import { Chore } from '../utils/choreapi';
+import { User } from '../utils/api';
 
 /**
 |--------------------------------------------------
@@ -37,8 +38,18 @@ export function addkid(args) {
   return async dispatch => {
     try {
       const data = await Child.addChild(args);
-      const chores = await Chore.getChores();
-//      const kids = await Child.getChildren(data.user.id);
+      const argtemp = {
+        userName: args.userName,
+        password: args.password,
+        role: "child",
+        email: args.email
+      }
+      await User.signup(argtemp);
+      //const chores = await Chore.getChores();
+      const kids = await Child.getChildren(localStorage.getItem("userid"));
+      data.children = kids.childs;
+      console.log("data is: ");
+      console.log(data);
       await dispatch({ type: ADD_SUCCESS, payload: data });
       browserHistory.push('/home');
     } catch (e) {

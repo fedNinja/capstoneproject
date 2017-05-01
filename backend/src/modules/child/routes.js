@@ -4,7 +4,8 @@ const routes = new Router();
 
 routes.post('/kids', ChildController.addChild);
 routes.get('/kids/:parent', ChildController.getChilds);
-routes.get('/kid/:id', ChildController.getChildById)
+routes.get('/kid/:id', ChildController.getChildById);
+routes.get('/child/:userName', ChildController.getAssignedChores);
 routes.put('/assignChores/:childId', ChildController.assignChores);
 routes.put('/updateAllowance', ChildController.updateAllowance);
 routes.put('/updateSpending', ChildController.updateSpending);

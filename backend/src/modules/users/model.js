@@ -14,7 +14,11 @@ const UserSchema = new Schema({
     type:String,
 		unique:true,
 		required:true
-  }
+  },
+	role:{
+		type:String,
+		required:true
+	}
 });
 
 UserSchema.pre("save", function(next) {

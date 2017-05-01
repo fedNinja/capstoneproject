@@ -23,7 +23,7 @@
   width:25%;
 }
 
-.approveAlign {
+.choreAlign {
   text-align: left;
   padding-left: 50px;
 }
@@ -45,4 +45,27 @@
 
 .rejBtnStyle {
   background-color: #ff0000;
+}
+
+.imgStyle {
+    float: left;
+    width: 100px;
+    height: 80px;
+    border:none;
+}
+
+.checkAlign {
+  float: left;
+}
+
+.listCompleteStyle {
+    list-style-type: none;
+    font-size: 20px;
+    height: 140px;
+    padding: 10px;
+}
+
+.choreCompleteList {
+  margin: 0 auto;
+  padding: 0;
 }

@@ -16,8 +16,8 @@ export const deleteById = function(req, res) {
 }
 
 export const createUser = async (req, res) => {
-  const { userName, password, email } = req.body;
-  const user = await User.create({ userName, password, email });
+  const { userName, password, email, role } = req.body;
+  const user = await User.create({ userName, password, email, role });
   try {
     return res.status(201).json({
       success: true,

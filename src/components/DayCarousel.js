@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
 import { dayPlus, dayMinus } from '../actions/dayCarousel';
+import './daycarousel.css';
 
-class DayCarousel extends React.Component {
+class DayCarousel extends Component {
     next = (e) => {
       e.preventDefault();
       this.props.dayPlus();
@@ -18,16 +19,15 @@ class DayCarousel extends React.Component {
       const { day, weekDays } = this.props.dayCarousel
         return (
           <div>
-            <h3>{weekDays[day]}</h3>
-            <button onClick={this.prev}>Prev</button>
-            <button onClick={this.next}>Next</button>
+            <button className= "inlineBlock btnPrevNext" onClick={this.prev}>Prev</button>
+            <h3 className= "inlineBlock">{weekDays[day]}</h3>
+            <button className= "inlineBlock btnPrevNext" onClick={this.next}>Next</button>
           </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-
   return {
     dayCarousel: state.dayCarousel
   }

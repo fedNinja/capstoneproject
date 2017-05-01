@@ -9,7 +9,8 @@ export default class AddKidForm extends Component {
     childName: '',
     dateOfBirth: '',
     userName: '',
-    password: ''
+    password: '',
+    email: ''
   };
 
   onChange = e => {
@@ -54,12 +55,20 @@ export default class AddKidForm extends Component {
           />
         </div>
         <div className="row">
-          <label className="col formlbl">Date of Birth</label>
+          <label className="col formlbl">Age</label>
           <input
             onChange={this.onChange}
             type="text"
-            name="dateOfBirth"
-            placeholder="mm/dd/yyyy"
+            name="age"
+            className="col inputStyle"
+          />
+        </div>
+        <div className="row">
+          <label className="col formlbl">Email</label>
+          <input
+            onChange={this.onChange}
+            type="text"
+            name="email"
             className="col inputStyle"
           />
         </div>

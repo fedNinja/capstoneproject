@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 
 export const addChild = async(req,res) => {
 	console.log(req.body);
-	const{ parent, userName, password, dateOfBirth } = req.body;
-	const newChild = new Child({ parent, userName, password, dateOfBirth });
+	const{ parent, userName, password, age } = req.body;
+	const newChild = new Child({ parent, userName, password, age });
 	try{
 	return res.status(201).json({ child: await newChild.save() });
 	}catch(e) {
@@ -42,7 +42,6 @@ export const assignChores = function(req, res) {
 		};
 	}
 
-
 /*	export const assignChores = function(req, res) {
 		const childId = req.params.childId;
 		let chores = req.body.chore;
@@ -68,6 +67,17 @@ export const assignChores = function(req, res) {
 			}
     });
 }
+
+export const getAssignedChores = async (req, res) => {
+	console.log("I am inside assigned chores");
+	console.log(req.params);
+	try{
+		return res.status(200).json({ childs: await Child.find({ userName:req.params.userName }) });
+		} catch(e) {
+		return res.status(e.status).json({ error: true, message: 'Error with to get child data' });
+	}
+}
+
 
 export const updateSpending = function(req, res) {
 	const childId = req.body.childId;

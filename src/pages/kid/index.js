@@ -8,7 +8,7 @@ class AddKidPage extends Component {
   render() {
     return (
       <div>
-          <AddKidForm addkid={this.props.addkid} />
+        <AddKidForm addkid={this.props.addkid} />
       </div>
     );
   }

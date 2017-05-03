@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import '../../components/flexgrid.css';
 import './style.css';
@@ -7,7 +7,7 @@ import './style.css';
 class LoginForm extends Component {
   state = {
     userName: '',
-    password: ''
+    password: '',
   };
 
   onChange = e => {
@@ -54,10 +54,10 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    errorMessage:state.user.error
-  }
-}
+    errorMessage: state.user.error,
+  };
+};
 
 export default connect(mapStateToProps)(LoginForm);

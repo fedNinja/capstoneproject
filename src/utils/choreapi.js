@@ -8,7 +8,7 @@ class ChoreApi {
   }
 
   async getChores() {
-    console.log("Inside chore api utils");
+    console.log('Inside chore api utils');
     try {
       const { data } = await axios.get(`${this.path}`);
       return data;
@@ -16,8 +16,6 @@ class ChoreApi {
       return e;
     }
   }
-
-
 }
 
 export const Chore = new ChoreApi();

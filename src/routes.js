@@ -11,7 +11,6 @@ import AddKidPage from './pages/kid';
 import ApproveRejectPage from './pages/approve';
 import CompleteChoresPage from './pages/completechores';
 
-
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingPage} />
@@ -21,6 +20,6 @@ export default (
     <Route path="/home" component={HomePage} />
     <Route path="/addkid" component={AddKidPage} />
     <Route path="/approve" component={ApproveRejectPage} />
-    <Route path="/completechore" component={CompleteChoresPage}  />
+    <Route path="/completechore" component={CompleteChoresPage} />
   </Route>
 );

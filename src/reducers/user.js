@@ -11,7 +11,7 @@ const initialState = {
   isLogged: false,
   info: {},
   isLoading: false,
-  error: null
+  error: null,
 };
 
 export default (state = initialState, action) => {

@@ -6,19 +6,17 @@ import './App.css';
 import './flexgrid.css';
 import './marquee.css';
 
-class NavigationBar extends Component{
-
+class NavigationBar extends Component {
   logout(e) {
     e.preventDefault();
     localStorage.clear();
     browserHistory.push('/');
   }
 
-  render(){
-
-    return(
+  render() {
+    return (
       <div className="App-header">
-      <div className="row">
+        <div className="row">
           <div className="col appLogo">
             <Link to="/">Gullak</Link>
           </div>
@@ -28,29 +26,27 @@ class NavigationBar extends Component{
               <a className="hashLink" href="#track"><li>Track</li></a>
               <a className="hashLink" href="#reward"><li>Reward</li></a>
               <li>
-                {(localStorage.length>0) ?
-                  (`Hello ${localStorage.getItem("username")}`)
-                :
-                    <Link to="/signup">Sign up</Link>
-                }
+                {localStorage.length > 0
+                  ? `Hello ${localStorage.getItem('username')}`
+                  : <Link to="/signup">Sign up</Link>}
               </li>
               <li>
-                {(localStorage.length>0) ?
-                    <a href="#" onClick={this.logout.bind(this)}>Logout</a>
-                :
-                  <Link to="/login">Login</Link>
-                }
-                </li>
+                {localStorage.length > 0
+                  ? <a href="#" onClick={this.logout.bind(this)}>Logout</a>
+                  : <Link to="/login">Login</Link>}
+              </li>
               <li><Link to="/contact">Contact us</Link></li>
             </ul>
           </div>
+        </div>
+        <div className="row horizontally altColor">
+          <p className="col subHeader">
+            <i>
+              Making chores fun and rewarding
+            </i>
+          </p>
+        </div>
       </div>
-      <div className="row horizontally altColor">
-        <p className="col subHeader"><i>
-          Making chores fun and rewarding
-        </i></p>
-      </div>
-    </div>
     );
   }
 }

@@ -1,27 +1,33 @@
 import { DAY_PLUS, DAY_MINUS } from '../actions/dayCarousel';
 
 const weekDays = [
-  'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
-]
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
 
 const initialState = {
-  day:0,
-  weekDays
-}
+  day: 0,
+  weekDays,
+};
 
-export default function reducer(state = initialState, action){
-  switch(action.type){
-    case DAY_PLUS:{
+export default function reducer(state = initialState, action) {
+  switch (action.type) {
+    case DAY_PLUS: {
       return {
         ...state,
-        day: action.day
-      }
+        day: action.day,
+      };
     }
-    case DAY_MINUS:{
+    case DAY_MINUS: {
       return {
         ...state,
-        day: action.day
-      }
+        day: action.day,
+      };
     }
     default:
       return state;

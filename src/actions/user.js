@@ -47,21 +47,22 @@ export function login(args) {
   return async dispatch => {
     try {
       const data = await User.login(args);
-      console.log()
-			localStorage.setItem(userid, data.user.id);
+      console.log();
+      localStorage.setItem(userid, data.user.id);
       localStorage.setItem(username, data.user.userName);
       localStorage.setItem(email, data.user.email);
       localStorage.setItem(token, data.token);
       setAuthToken(data.token);
-      if(data.user.role == 'parent') {
+      if (data.user.role == 'parent') {
         const kids = await Child.getChildren(data.user.id);
         data.children = kids.childs;
         await dispatch(loginSuccess(data));
         console.log(data);
         browserHistory.push('/home');
-      }
-      else {
-        const assignedChores = await Child.getAssignedChores(data.user.userName);
+      } else {
+        const assignedChores = await Child.getAssignedChores(
+          data.user.userName,
+        );
         console.log(assignedChores);
         data.assignedChores = assignedChores.childs[0].assignedChores;
         const chores = await axios.get('/chores');
@@ -76,7 +77,6 @@ export function login(args) {
     }
   };
 }
-
 
 /*export function login(args) {
   console.log("inside login action");

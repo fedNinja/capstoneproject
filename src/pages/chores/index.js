@@ -9,7 +9,10 @@ class AddChoresPage extends Component {
     console.log(this.props.params.childId);
     return (
       <div>
-          <AddChoresForm addChoresRequest={addChoresRequest} childId={this.props.params.childId} />
+        <AddChoresForm
+          addChoresRequest={addChoresRequest}
+          childId={this.props.params.childId}
+        />
 
       </div>
     );

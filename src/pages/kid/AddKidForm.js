@@ -5,12 +5,12 @@ import './style.css';
 
 export default class AddKidForm extends Component {
   state = {
-    parent: localStorage.getItem("userid"),
+    parent: localStorage.getItem('userid'),
     childName: '',
     dateOfBirth: '',
     userName: '',
     password: '',
-    email: ''
+    email: '',
   };
 
   onChange = e => {
@@ -25,58 +25,58 @@ export default class AddKidForm extends Component {
   render() {
     return (
       <div className="centerItem">
-      <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <h1 className="alignHeader">Add Kid for Gullak</h1>
-        <div className="row">
-          <label className="col formlbl">Child Name</label>
-          <input
-            onChange={this.onChange}
-            type="text"
-            name="childName"
-            className="col inputStyle"
-          />
-        </div>
-        <div className="row">
-          <label className="col formlbl">UserName</label>
-          <input
-            onChange={this.onChange}
-            type="text"
-            name="userName"
-            className="col inputStyle"
-          />
-        </div>
-        <div className="row">
-          <label className="col formlbl">Password</label>
-          <input
-            onChange={this.onChange}
-            type="password"
-            name="password"
-            className="col inputStyle"
-          />
-        </div>
-        <div className="row">
-          <label className="col formlbl">Age</label>
-          <input
-            onChange={this.onChange}
-            type="text"
-            name="age"
-            className="col inputStyle"
-          />
-        </div>
-        <div className="row">
-          <label className="col formlbl">Email</label>
-          <input
-            onChange={this.onChange}
-            type="text"
-            name="email"
-            className="col inputStyle"
-          />
-        </div>
-        <div className="row btnAlign">
-          <button className="col">Add Child</button>
-        </div>
-      </form>
-    </div>
+          <div className="row">
+            <label className="col formlbl">Child Name</label>
+            <input
+              onChange={this.onChange}
+              type="text"
+              name="childName"
+              className="col inputStyle"
+            />
+          </div>
+          <div className="row">
+            <label className="col formlbl">UserName</label>
+            <input
+              onChange={this.onChange}
+              type="text"
+              name="userName"
+              className="col inputStyle"
+            />
+          </div>
+          <div className="row">
+            <label className="col formlbl">Password</label>
+            <input
+              onChange={this.onChange}
+              type="password"
+              name="password"
+              className="col inputStyle"
+            />
+          </div>
+          <div className="row">
+            <label className="col formlbl">Age</label>
+            <input
+              onChange={this.onChange}
+              type="text"
+              name="age"
+              className="col inputStyle"
+            />
+          </div>
+          <div className="row">
+            <label className="col formlbl">Email</label>
+            <input
+              onChange={this.onChange}
+              type="text"
+              name="email"
+              className="col inputStyle"
+            />
+          </div>
+          <div className="row btnAlign">
+            <button className="col">Add Child</button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

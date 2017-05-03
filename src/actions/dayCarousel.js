@@ -6,25 +6,25 @@ export const dayPlus = () => (dispatch, getState) => {
   if (day === 6) {
     return dispatch({
       type: DAY_PLUS,
-      day: 0
-    })
+      day: 0,
+    });
   }
   return dispatch({
     type: DAY_PLUS,
-    day: day + 1
-  })
-}
+    day: day + 1,
+  });
+};
 
 export const dayMinus = () => (dispatch, getState) => {
   const { day } = getState().dayCarousel;
   if (day === 0) {
     return dispatch({
       type: DAY_MINUS,
-      day: 6
-    })
+      day: 6,
+    });
   }
   return dispatch({
     type: DAY_MINUS,
-    day: day - 1
-  })
-}
+    day: day - 1,
+  });
+};

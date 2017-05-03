@@ -1,13 +1,9 @@
-import {
-  ADD,
-  ADD_SUCCESS,
-  ADD_ERROR
-} from '../actions/addkid';
+import { ADD, ADD_SUCCESS, ADD_ERROR } from '../actions/addkid';
 
 const initialState = {
   info: {},
   isLoading: false,
-  error: null
+  error: null,
 };
 
 export default (state = initialState, action) => {
@@ -21,7 +17,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        info: action.payload
+        info: action.payload,
       };
     case ADD_ERROR:
       return {

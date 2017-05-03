@@ -8,7 +8,7 @@ class ChildApi {
   }
 
   async getChildren(args) {
-    console.log("Inside child api utils");
+    console.log('Inside child api utils');
     console.log(args);
     try {
       const { data } = await axios.get(`${this.path}/${args}`);
@@ -18,9 +18,9 @@ class ChildApi {
     }
   }
 
-/* newly added function */
+  /* newly added function */
   async addChild(args) {
-    console.log("Inside child api utils");
+    console.log('Inside child api utils');
     console.log(args);
     try {
       const { data } = await axios.post(`${this.path}`, args);
@@ -31,7 +31,7 @@ class ChildApi {
   }
 
   async getAssignedChores(args) {
-    console.log("Inside get chores api utils");
+    console.log('Inside get chores api utils');
     console.log(args);
     const path = '/child';
     try {
@@ -43,7 +43,7 @@ class ChildApi {
   }
 
   async completeChore(args) {
-    console.log("Inside complete chore utils");
+    console.log('Inside complete chore utils');
     console.log(args);
     try {
       const { data } = await axios.post(`${this.path}`, args);
@@ -52,7 +52,6 @@ class ChildApi {
       return e;
     }
   }
-
 }
 
 export const Child = new ChildApi();

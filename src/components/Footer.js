@@ -4,11 +4,7 @@ import './footer.css';
 
 class Footer extends Component {
   render() {
-    return (
-      <div className="footerDiv">
-
-      </div>
-    );
+    return <div className="footerDiv" />;
   }
 }
 

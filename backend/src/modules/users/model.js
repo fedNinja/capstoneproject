@@ -3,21 +3,22 @@ import { hash, compare } from 'bcrypt';
 
 const UserSchema = new Schema({
 	userName:{
-		type:String,
-		required:true
+		type: String,
+		required: true
 	},
 	password:{
-		type:String,
-		required:true
+		type: String,
+		required: true
 	},
   email:{
-    type:String,
-		unique:true,
-		required:true
+    type: String,
+		unique: true,
+		required: true
   },
 	role:{
-		type:String,
-		required:true
+		type: String,
+		enum: ['parent', 'child'],
+		default: 'parent'
 	}
 });
 

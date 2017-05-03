@@ -43,6 +43,10 @@
   background-color: #0080ff;
 }
 
+.appBtnStyle:disabled {
+  background-color: grey;
+}
+
 .rejBtnStyle {
   background-color: #ff0000;
 }

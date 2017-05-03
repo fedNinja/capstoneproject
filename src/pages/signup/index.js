@@ -9,7 +9,7 @@ class SignupPage extends Component {
     const { signup } = this.props;
     return (
       <div>
-          <SignupForm signup={signup} />
+        <SignupForm signup={signup} />
       </div>
     );
   }

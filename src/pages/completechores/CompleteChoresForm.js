@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { completeChoresRequest } from '../../actions/completeChoreAction';
 import '../../components/flexgrid.css';
 import './style.css';
 import Chore from './Chore';
@@ -12,8 +11,7 @@ class CompleteChoresForm extends Component {
       <div className="centerAlign">
         <h3>Chores Inbox</h3>
         <div>
-          <p> I am here </p>
-          <ul className="renderedList choreCompleteList">
+          <ul className="choreCompleteList">
             {this.props.chores.map((chore, i) => <Chore {...chore} key={i} />)}
           </ul>
         </div>

@@ -5,9 +5,10 @@
 }
 
 .centerAlign {
-    text-align: center;
-    margin-top: 50px;
-    padding: 50px;
+  width: 700px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 50px;
 }
 
 .partitionStyle {
@@ -24,8 +25,7 @@
 }
 
 .choreAlign {
-  text-align: left;
-  padding-left: 50px;
+  margin-top: 10px;
 }
 
 .appRejButton {
@@ -45,6 +45,7 @@
 
 .appBtnStyle:disabled {
   background-color: grey;
+  cursor: default;
 }
 
 .rejBtnStyle {
@@ -60,12 +61,14 @@
 
 .checkAlign {
   float: left;
+  width: 25%;
+  margin-top: 20px;
 }
 
 .listCompleteStyle {
     list-style-type: none;
     font-size: 20px;
-    height: 140px;
+    height: 75px;
     padding: 10px;
 }
 

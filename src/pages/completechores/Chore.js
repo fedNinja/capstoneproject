@@ -5,6 +5,8 @@
 
 import React, { Component } from 'react';
 
+import './style.css';
+
 class Chore extends Component {
   state = { isChecked: false };
 
@@ -17,22 +19,22 @@ class Chore extends Component {
   render() {
     return (
       <div>
+        <hr className="partitionStyle" />
         <li className="listCompleteStyle">
-          <hr className="partitionStyle" />
-          <div className="eleAlign checkAlign">
+          <div>
             <input
               type="checkbox"
               name="test"
               onChange={this._handleCheck}
               checked={this.state.isChecked}
-              className="isComplete"
+              className="checkAlign"
             />
             <img
               className="imgStyle eleAlign"
               alt="choreImage"
               src={this.props.imgurl}
             />
-            <p className="eleAlign">
+            <p className="eleAlign choreAlign">
               {this.props.choreName}
             </p>
             <div className="eleAlign">

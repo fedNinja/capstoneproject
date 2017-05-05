@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { approveChoresRequest } from '../../actions/approveChoresAction';
-import '../../components/flexgrid.css';
 import './style.css';
+import '../../components/flexgrid.css';
 
 class ApproveChoresForm extends Component {
   constructor(props) {

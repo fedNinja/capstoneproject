@@ -6,15 +6,27 @@
 import React, { Component } from 'react';
 
 import './style.css';
+import '../../components/flexgrid.css';
 
 class Chore extends Component {
-  state = { isChecked: false };
+  state = {
+    id: localStorage.getItem('userid'),
+    choreId: '',
+    isChecked: false
+  };
 
   _handleCheck = () => {
     this.setState({
       isChecked: !this.state.isChecked
     });
   };
+
+  onClick = (e) => {
+    this.setState({
+      choreId: this.props[0]
+    });
+    this.props.completeChoresRequest(this.state);
+  }
 
   render() {
     return (
@@ -32,15 +44,16 @@ class Chore extends Component {
             <img
               className="imgStyle eleAlign"
               alt="choreImage"
-              src={this.props.imgurl}
+              src={this.props[2]}
             />
             <p className="eleAlign choreAlign">
-              {this.props.choreName}
+              {this.props[1]}
             </p>
             <div className="eleAlign">
               <button
                 className="appRejButton appBtnStyle"
                 disabled={!this.state.isChecked}
+                onClick={e => this.onClick(e)}
               >
                 Done
               </button>

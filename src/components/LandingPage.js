@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import './flexgrid.css';
-
 class LandingPage extends Component {
   render() {
     return (
@@ -12,7 +10,7 @@ class LandingPage extends Component {
         <section className="row aboutAlign" id="assign">
           <div className="col picAlign" />
           <div className="col About">
-            <h3>Assign </h3>
+            <h3> Assign </h3>
             <p>Make your kids more responsible by assigning them chores.</p>
             <p>
               Pick from a variety of chore categories like household, personal etc.
@@ -27,7 +25,7 @@ class LandingPage extends Component {
         </section>
         <section className="row aboutAlign" id="track">
           <div className="col About">
-            <h3>Track </h3>
+            <h3> Track </h3>
             <p>Keep track of the chores on daily/hourly basis.</p>
             <p>Approve or reject completion of the chores. </p>
             <p>
@@ -39,7 +37,7 @@ class LandingPage extends Component {
         <section className="row aboutAlign" id="reward">
           <div className="col picAlign2" />
           <div className="col About">
-            <h3>Reward </h3>
+            <h3> Reward </h3>
             <p>
               Instant allowance allocation upon approval of chores completion.
             </p>

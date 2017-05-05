@@ -42,11 +42,11 @@ class ChildApi {
     }
   }
 
-  async completeChore(args) {
+  async completeChoresRequest(args) {
     console.log('Inside complete chore utils');
     console.log(args);
     try {
-      const { data } = await axios.post(`${this.path}`, args);
+      const { data } = await axios.put('/chorestoapprove', args);
       return data;
     } catch (e) {
       return e;

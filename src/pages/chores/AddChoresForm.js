@@ -7,8 +7,8 @@ import {
   assignChoreRequest,
 } from '../../actions/addChoresAction';
 import DayCarousel from '../../components/DayCarousel';
-import '../../components/flexgrid.css';
 import './style.css';
+import '../../components/flexgrid.css';
 
 class AddChoresForm extends Component {
   constructor(props) {
@@ -29,6 +29,8 @@ class AddChoresForm extends Component {
     const chores = [
       {
         ChId: this.props.chores[j]._id,
+        ChName: this.props.chores[j].choreName,
+        ChImg: this.props.chores[j].imgurl,
         day: weekDays[day],
         status: false,
       },
@@ -93,10 +95,6 @@ class AddChoresForm extends Component {
   }
 }
 
-AddChoresForm.propTypes = {
-  addChoresRequest: React.PropTypes.func.isRequired,
-  //  assignChoreRequest: React.PropTypes.func.isRequired
-};
 
 const mapStateToProps = state => {
   return {

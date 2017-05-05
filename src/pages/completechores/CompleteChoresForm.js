@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '../../components/flexgrid.css';
 import './style.css';
 import Chore from './Chore';
 
 class CompleteChoresForm extends Component {
   render() {
+    console.log("my props is",this.props);
     return (
       <div className="centerAlign">
         <h3>Chores Inbox</h3>
         <div>
           <ul className="choreCompleteList">
-            {this.props.chores.map((chore, i) => <Chore {...chore} key={i} />)}
+            {this.props.assignedChores.map((chore, i) => <Chore {...chore} key={i} completeChoresRequest={this.props.completeChoresRequest} />)}
           </ul>
         </div>
       </div>

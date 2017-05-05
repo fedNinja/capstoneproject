@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import '../../components/flexgrid.css';
 import './style.css';
+import '../../components/flexgrid.css';
 
 export default class SignupForm extends Component {
   state = {

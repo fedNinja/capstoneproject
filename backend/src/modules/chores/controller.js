@@ -20,6 +20,15 @@ export const getChores = async (req, res) => {
 	}
 }
 
+export const getChoreById = async (req, res) => {
+  console.log("I am inside chore id");
+  try{
+    res.status(200).json({ chore: await Chore.find({ _id: req.params.id }) });
+    } catch(e) {
+  return res.status(e.status).json({ error: true, message: 'Error with getting chore data' });
+  }
+}
+
 export const getChoresByCategory = async (req, res) => {
   try{
     const test = { chores: await Chore.find({ category: req.params.category })};

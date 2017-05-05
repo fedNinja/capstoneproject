@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '../../components/flexgrid.css';
 import './style.css';
+import '../../components/flexgrid.css';
 
 class LoginForm extends Component {
   state = {

@@ -6,6 +6,11 @@ const ChildSchema = new Schema({
     ref:"User",
     required:true
   },
+  userId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"User",
+    required:true
+  },
 	userName:{
 		type:String,
 		required:true

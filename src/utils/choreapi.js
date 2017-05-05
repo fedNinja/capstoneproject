@@ -16,6 +16,17 @@ class ChoreApi {
       return e;
     }
   }
+
+  async getChoreById(args) {
+    console.log('Inside chore api utils');
+    try {
+      const { data } = await axios.get(`${this.path}/${args}`);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
+
 }
 
 export const Chore = new ChoreApi();

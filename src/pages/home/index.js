@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import './style.css';
+import '../../components/flexgrid.css';
 
 class HomePage extends Component {
   render() {

@@ -37,14 +37,18 @@ export const ADD_ERROR = 'ADD_ERROR';
 export function addkid(args) {
   return async dispatch => {
     try {
-      const data = await Child.addChild(args);
       const argtemp = {
         userName: args.userName,
         password: args.password,
         role: 'child',
         email: args.email,
       };
-      await User.signup(argtemp);
+      const uData = await User.signup(argtemp);
+      console.log(uData);
+      const argsRevised = args;
+      argsRevised.userId = uData.user.id;
+      console.log(argsRevised);
+      const data = await Child.addChild(argsRevised);
       //const chores = await Chore.getChores();
       const kids = await Child.getChildren(localStorage.getItem('userid'));
       data.children = kids.childs;

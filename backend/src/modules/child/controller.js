@@ -2,13 +2,14 @@ import Child from './model';
 import mongoose from 'mongoose';
 
 export const addChild = async(req,res) => {
-	console.log(req.body);
-	const{ parent, userName, password, age } = req.body;
-	const newChild = new Child({ parent, userName, password, age });
+  console.log("Inside add child");
+	const{ parent, userId, userName, password, age } = req.body;
+	const newChild = new Child({ parent, userId, userName, password, age });
 	try{
 	return res.status(201).json({ child: await newChild.save() });
 	}catch(e) {
-	return res.status(400).json({ error: true, message: 'Error with child account creation' });
+    console.log("Somethig is terribly wrong");
+	return res.status(400).json({ error: true, message: e });
  }
 }
 
@@ -30,47 +31,49 @@ export const getChildById = async (req, res) => {
 
 export const assignChores = function(req, res) {
 	const childId = req.params.childId;
-	let chores = req.body.chore;
-	let choresArray = [];
-	let ChId, day, status;
+	const chores = req.body.chore;
+	const choresArray = [];
+	let ChId,
+      ChName,
+      ChImg,
+      day,
+      status;
 	for(var key in chores){
 		if(chores.hasOwnProperty(key)){
-			ChId = chores[key].ChId;
+      ChId = chores[key].ChId;
+      ChName = chores[key].ChName;
+      ChImg = chores[key].ChImg;
 			day = chores[key].day;
 			status = chores[key].status;
-			choresArray.push([ChId, day, status]);
+			choresArray.push([ChId, ChName, ChImg, day, status]);
 		};
 	}
-
-/*	export const assignChores = function(req, res) {
-		const childId = req.params.childId;
-		let chores = req.body.chore;
-		let choresArray = [];
-		let ChId, day, status;
-		for(var key in chores){
-			if(chores.hasOwnProperty(key)){
-				ChId = chores[key].ChId;
-				day = chores[key].day;
-				status = chores[key].status;
-				choresArray.push([ChId, day, status]);
-			};
-		}
-*/
-
 	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: { $each: choresArray }}}, { new: true}, function(err, obj){
       if(err){
         res.status(500).send(err);
       }
 			else{
-				console.log(obj);
+				res.status(201).json(obj);
+			}
+    });
+}
+
+export const choresToApprove = function(req, res) {
+  const userId = req.body.id;
+  const choreId = req.body.choreId;
+  console.log(userId);
+  console.log(choreId);
+  Child.findOneAndUpdate({ userId }, { $push: { choresForApproval: { $each: [choreId] }}}, { new: true}, function(err, obj){
+      if(err){
+        res.status(500).send(err);
+      }
+			else{
 				res.status(201).json(obj);
 			}
     });
 }
 
 export const getAssignedChores = async (req, res) => {
-	console.log("I am inside assigned chores");
-	console.log(req.params);
 	try{
 		return res.status(200).json({ childs: await Child.find({ userName:req.params.userName }) });
 		} catch(e) {
@@ -105,7 +108,7 @@ export const deleteById = function(req, res) {
 }
 
 export const deleteChoreById = function(req, res) {
-	var assignedChoresId = req.params.assignedChores;
+	const assignedChoresId = req.params.assignedChores;
 
 	Child
 		.find({ _id: req.params.id, assignedChores: { $all:[[assignedChoresId]] } })
@@ -121,7 +124,7 @@ export const deleteChoreById = function(req, res) {
 export const updateAllowance = function(req, res) {
 	const childId = req.body.childId;
 	const allowance = Number(req.body.allowance);
-	Child.findOneAndUpdate({ '_id': childId }, { $set: {allowance: allowance }}, { upsert: false }, function(err){
+	Child.findOneAndUpdate({ '_id': childId }, { $set: { allowance }}, { upsert: false }, function(err){
       if(err){
         res.status(500).send(err);
       }

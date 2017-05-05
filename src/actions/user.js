@@ -46,8 +46,8 @@ export function login(args) {
   console.log(args);
   return async dispatch => {
     try {
+      console.log(args);
       const data = await User.login(args);
-      console.log();
       localStorage.setItem(userid, data.user.id);
       localStorage.setItem(username, data.user.userName);
       localStorage.setItem(email, data.user.email);
@@ -57,7 +57,6 @@ export function login(args) {
         const kids = await Child.getChildren(data.user.id);
         data.children = kids.childs;
         await dispatch(loginSuccess(data));
-        console.log(data);
         browserHistory.push('/home');
       } else {
         const assignedChores = await Child.getAssignedChores(
@@ -99,8 +98,15 @@ export function signup(args) {
     return axios
       .post('/user/signup', args)
       .then(res => {
+        console.log(res.data);
+        localStorage.setItem(userid, res.data.user.id);
+        localStorage.setItem(username, res.data.user.userName);
+        localStorage.setItem(email, res.data.user.email);
+        localStorage.setItem(token, res.data.token);
+        setAuthToken(res.data.token);
+        res.data.children = [];
         dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
-        browserHistory.push('/');
+        browserHistory.push('/home');
       })
       .catch(err => dispatch({ type: SIGNUP_ERROR, payload: err }));
   };

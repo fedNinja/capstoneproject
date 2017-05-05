@@ -1,5 +1,7 @@
 import {Router} from 'express';
+
 import * as ChildController from './controller';
+
 const routes = new Router();
 
 routes.post('/kids', ChildController.addChild);
@@ -11,4 +13,5 @@ routes.put('/updateAllowance', ChildController.updateAllowance);
 routes.put('/updateSpending', ChildController.updateSpending);
 routes.delete('/deleteChild/:id', ChildController.deleteById);
 routes.get('/deleteChore/:id/:assignedChores', ChildController.deleteChoreById);
+routes.put('/chorestoapprove', ChildController.choresToApprove);
 export default routes;

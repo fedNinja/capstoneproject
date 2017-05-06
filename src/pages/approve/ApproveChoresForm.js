@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { approveChoresRequest } from '../../actions/approveChoresAction';
 import './style.css';
 import '../../components/flexgrid.css';
+import Chore from '../completechores/Chore';
 
 class ApproveChoresForm extends Component {
   constructor(props) {
@@ -31,24 +32,16 @@ class ApproveChoresForm extends Component {
   onClick(e, j) {}
 
   render() {
+    console.log("chores are ");
+    console.log(this.props.chores);
     return (
       <div className="centerAlign">
         <h3>Approval Inbox</h3>
         <hr className="partitionStyle" />
-        <div className="eleAlign approveAlign">
-          <input
-            type="checkbox"
-            name="isApproved"
-            checked={this.state.isApprove}
-            className="isApprove"
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <p className="eleAlign">Child1</p>
-        <p className="eleAlign">Chore1</p>
-        <div className="eleAlign">
-          <button className="appRejButton appBtnStyle">Approve</button>
-          <button className="appRejButton rejBtnStyle">Reject</button>
+        <div>
+          <ul className="choreCompleteList">
+            {this.props.chores.map((chore, i) => <Chore {...chore} action='approve' key={i} approveChoresRequest={this.props.approveChoresRequest} />)}
+          </ul>
         </div>
       </div>
     );
@@ -58,6 +51,7 @@ class ApproveChoresForm extends Component {
 const mapStateToProps = state => {
   return {
     errorMessage: state.chores.errorMessage,
+    chores: state.user.info.children[0].choresForApproval
   };
 };
 

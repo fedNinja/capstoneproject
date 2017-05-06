@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { User } from '../utils/api';
 import { Child } from '../utils/childapi';
 import setAuthToken from '../utils/setAuthToken';
+import {getChildren} from './addkid';
 
 /**
 |--------------------------------------------------
@@ -56,13 +57,14 @@ export function login(args) {
       if (data.user.role == 'parent') {
         const kids = await Child.getChildren(data.user.id);
         data.children = kids.childs;
+        await dispatch(getChildren(kids.childs));
         await dispatch(loginSuccess(data));
         browserHistory.push('/home');
       } else {
         const assignedChores = await Child.getAssignedChores(
           data.user.userName,
         );
-        console.log(assignedChores);
+        console.log("assignedChores", assignedChores);
         data.assignedChores = assignedChores.childs[0].assignedChores;
         const chores = await axios.get('/chores');
         console.log(chores);

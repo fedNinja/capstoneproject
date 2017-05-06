@@ -26,15 +26,9 @@ class AddChoresForm extends Component {
 
   onClick(e, j) {
     const { day, weekDays } = this.props.dayCarousel;
-    const chores = [
-      {
-        ChId: this.props.chores[j]._id,
-        ChName: this.props.chores[j].choreName,
-        ChImg: this.props.chores[j].imgurl,
-        day: weekDays[day],
-        status: false,
-      },
-    ];
+    const chores = {
+        _id: this.props.chores[j]._id
+    };
     this.setState({
       addedChores: this.state.addedChores.concat([j]),
     });

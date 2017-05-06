@@ -1,4 +1,4 @@
-const initialState = {
+/*const initialState = {
   category: '',
   chores: [],
   errorMessage: '',
@@ -33,4 +33,4 @@ export default function reducer(state = initialState, action) {
     default:
       return state;
   }
-}
+}*/

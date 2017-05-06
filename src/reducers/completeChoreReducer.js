@@ -1,4 +1,4 @@
-import { CHORE_COMPLETED_SUCCESS, CHORE_COMPLETED_ERROR } from '../actions/completeChoreAction';
+/*import { CHORE_COMPLETED_SUCCESS, CHORE_COMPLETED_ERROR } from '../actions/completeChoreAction';
 
 const initialState = {
   chore: '',
@@ -22,3 +22,4 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+*/

@@ -10,15 +10,22 @@ import { User } from '../utils/api';
 |--------------------------------------------------
 */
 
-export const ADD = 'ADD';
-export const ADD_SUCCESS = 'ADD_SUCCESS';
-export const ADD_ERROR = 'ADD_ERROR';
+export const ADD_CHILDREN = 'ADD_CHILDREN';
+export const ADD_CHILDREN_SUCCESS = 'ADD_CHILDREN_SUCCESS';
+export const ADD_CHILDREN_ERROR = 'ADD_CHILDREN_ERROR';
+export const GET_CHILDREN = 'GET_CHILDREN'
 
 /**
 |--------------------------------------------------
 | Actions
 |--------------------------------------------------
 */
+export function getChildren(children) {
+  return {
+    type: GET_CHILDREN,
+    children
+  }
+}
 
 /*export function addkid(args) {
   return dispatch => {
@@ -52,12 +59,13 @@ export function addkid(args) {
       //const chores = await Chore.getChores();
       const kids = await Child.getChildren(localStorage.getItem('userid'));
       data.children = kids.childs;
+      await dispatch(getChildren(kids.childs));
       console.log('data is: ');
       console.log(data);
-      await dispatch({ type: ADD_SUCCESS, payload: data });
+      await dispatch({ type: ADD_CHILDREN_SUCCESS, child: data.child });
       browserHistory.push('/home');
     } catch (e) {
-      dispatch({ type: ADD_ERROR, payload: e });
+      dispatch({ type: ADD_CHILDREN_ERROR, payload: e });
     }
   };
 }

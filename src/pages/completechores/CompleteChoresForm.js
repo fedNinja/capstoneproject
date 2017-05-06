@@ -12,7 +12,7 @@ class CompleteChoresForm extends Component {
         <h3>Chores Inbox</h3>
         <div>
           <ul className="choreCompleteList">
-            {this.props.assignedChores.map((chore, i) => <Chore {...chore} key={i} completeChoresRequest={this.props.completeChoresRequest} />)}
+            {this.props.assignedChores.map((chore, i) => <Chore {...chore} action='done' key={i} completeChoresRequest={this.props.completeChoresRequest} />)}
           </ul>
         </div>
       </div>
@@ -24,7 +24,7 @@ const mapStateToProps = state => {
   return {
     assignedChores: state.user.info.assignedChores,
     chores: state.user.info.chores,
-    errorMessage: state.chores.errorMessage,
+    errorMessage: state.chores.errorMessage
   };
 };
 

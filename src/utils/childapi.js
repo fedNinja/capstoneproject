@@ -52,6 +52,29 @@ class ChildApi {
       return e;
     }
   }
+
+  async deleteAssignedChore(args) {
+    console.log('Inside chore api utils');
+    try {
+      const id = args.id;
+      const choreId = args.choreId;
+      const { data } = await axios.delete(`/deleteChore/${id}/${choreId}`);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  async getChoresForApproval(args) {
+    console.log('Getting chores for approval');
+    try {
+      const { data } = await axios.get(`/getChoresForApproval/${args}`);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
+
 }
 
 export const Child = new ChildApi();

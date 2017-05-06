@@ -24,10 +24,16 @@ export function completeChoresRequest(args) {
   console.log(args);
   return async dispatch => {
     try {
+      console.log("args ");
+      console.log(args);
       const data = await Child.completeChoresRequest(args);
       console.log(data);
+      const assignedChores = await Child.deleteAssignedChore(args);
+      console.log("assignedChores ");
+      console.log(assignedChores);
+      data.assignedChores = assignedChores;
       await dispatch(choreSuccess(data));
-      browserHistory.push('/home');
+      browserHistory.push('/completechore');
     } catch (e) {
       dispatch(choreError(e));
     }

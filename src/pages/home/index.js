@@ -4,9 +4,15 @@ import { Link } from 'react-router';
 
 import './style.css';
 import '../../components/flexgrid.css';
+import { getApprovalInboxRequest } from '../../actions/getApprovalInboxAction';
 
 class HomePage extends Component {
-  render() {
+
+onClick = (e) => {
+  this.props.dispatch(getApprovalInboxRequest());
+}
+
+render() {
     const { children } = this.props;
     console.log(localStorage.getItem('username'));
     console.log(children);
@@ -18,9 +24,10 @@ class HomePage extends Component {
             User name: {localStorage.getItem('username')}
           </p>
           <p className="dataUser">Email: {localStorage.getItem('email')}</p>
+          <button onClick={e => this.onClick(e)}>Approval Inbox</button>
         </div>
         <ul className="listKids">
-          {children.map((child, i) => (
+          {children.data.map((child, i) => (
             <li key={i} className="clearFix">
               <Link to={'/addchores/' + child._id}>
                 <div className="avatar imgAlign" />
@@ -41,7 +48,7 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    children: state.user.info.children,
+    children: state.children,
   };
 };
 

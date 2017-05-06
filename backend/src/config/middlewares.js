@@ -11,7 +11,7 @@ export default app => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header(
       'Access-Control-Allow-Methods',
-      'PUT, GET, POST, DELETE, OPTIONS',
+      'PUT, GET, POST, PATCH, DELETE, OPTIONS',
     );
     res.header(
       'Access-Control-Allow-Headers',

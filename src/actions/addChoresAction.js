@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RECIEVE_DATA = 'RECIEVE_DATA';
+export const RECIEVE_DATA = 'RECIEVE_DATA';
 const RecieveData = chores => {
   return {
     type: RECIEVE_DATA,
@@ -21,9 +21,11 @@ export function addChoresRequest(category) {
 }
 
 export function assignChoreRequest(childId, chore) {
+  console.log(childId);
+  console.log(chore);
   return dispatch => {
     return axios
-      .put('/assignChores/' + childId, { chore })
+      .patch('/assignChores/' + childId, chore)
       .then(res => {
         console.log(`Inside res ${res}`);
         dispatch(RecieveData(res.data));

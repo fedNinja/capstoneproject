@@ -21,8 +21,7 @@ class LoginForm extends Component {
 
   render() {
     const { errorMessage } = this.props;
-    const { userId } = this.props;
-    console.log(errorMessage);
+
     return (
       <div className="centerItem">
         {errorMessage ? <p>{errorMessage}</p> : null}

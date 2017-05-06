@@ -23,42 +23,30 @@ export const getChilds = async (req, res) => {
 
 export const getChildById = async (req, res) => {
   try{
-    res.status(200).json({ child: await Child.find({ _id: req.params.id }) });
+    res.status(200).json({ child: await Child.find({ _id: req.params.id }).populate("assignedChores") });
     } catch(e) {
   return res.status(e.status).json({ error: true, message: 'Error with getting child data' });
   }
 }
 
 export const assignChores = function(req, res) {
+  console.log("hello");
+  console.log(req.body);
 	const childId = req.params.childId;
-	const chores = req.body.chore;
-	const choresArray = [];
-	let ChId,
-      ChName,
-      ChImg,
-      day,
-      status;
-	for(var key in chores){
-		if(chores.hasOwnProperty(key)){
-      ChId = chores[key].ChId;
-      ChName = chores[key].ChName;
-      ChImg = chores[key].ChImg;
-			day = chores[key].day;
-			status = chores[key].status;
-			choresArray.push([ChId, ChName, ChImg, day, status]);
-		};
-	}
-	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: { $each: choresArray }}}, { new: true}, function(err, obj){
+	const _id = req.body._id;
+	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: _id}}, { new: true}, function(err, obj){
       if(err){
         res.status(500).send(err);
       }
 			else{
-				res.status(201).json(obj);
+        console.log(obj);
+				res.status(201).json(obj.assignedChores);
 			}
     });
 }
 
 export const choresToApprove = function(req, res) {
+  console.log(req);
   const userId = req.body.id;
   const choreId = req.body.choreId;
   console.log(userId);
@@ -75,12 +63,19 @@ export const choresToApprove = function(req, res) {
 
 export const getAssignedChores = async (req, res) => {
 	try{
-		return res.status(200).json({ childs: await Child.find({ userName:req.params.userName }) });
+		return res.status(200).json({ childs: await Child.find({ userName:req.params.userName }).populate("assignedChores") });
 		} catch(e) {
 		return res.status(e.status).json({ error: true, message: 'Error with to get child data' });
 	}
 }
 
+export const getChoresForApproval = async (req, res) => {
+  try {
+    return res.status(200).json({ childs: await Child.find({ _id: req.params.id}).populate("choresForApproval") });
+  } catch(e) {
+    return res.status(e.status).json({ error: true, message: 'Error getting the chores for approval' });
+  }
+}
 
 export const updateSpending = function(req, res) {
 	const childId = req.body.childId;
@@ -109,9 +104,23 @@ export const deleteById = function(req, res) {
 
 export const deleteChoreById = function(req, res) {
 	const assignedChoresId = req.params.assignedChores;
-
+  console.log("Inside the delete chore request");
 	Child
-		.find({ _id: req.params.id, assignedChores: { $all:[[assignedChoresId]] } })
+		.find({ userId: req.params.id, assignedChores: { $all:[[assignedChoresId]] } })
+		.exec()
+		.then((chore) => {
+			res.status(201).json(chore);
+		})
+		.catch(err => {
+			res.status(500).json({ error: 'something went terribly wrong' });
+		});
+}
+
+export const deleteChoreForApprovalById = function(req, res) {
+  const choresForApprovalId = req.params.choresForApproval;
+  console.log("Inside the delete chore request");
+	Child
+		.find({ userId: req.params.id, choresForApproval: { $all:[[choresForApprovalId]] } })
 		.exec()
 		.then((chore) => {
 			res.status(201).json(chore);

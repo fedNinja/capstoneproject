@@ -23,12 +23,14 @@ const ChildSchema = new Schema({
 		type:String,
 		required:true
 	},
-  assignedChores:{
-    type:[]
-  },
-  choresForApproval:{
-    type:[]
-  },
+  assignedChores:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Chore"
+  }],
+  choresForApproval:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Chore"
+  }],
   allowance:{
     type:Number
   },

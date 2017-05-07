@@ -37,10 +37,10 @@ class ApproveChoresForm extends Component {
     return (
       <div className="centerAlign">
         <h3>Approval Inbox</h3>
-        <hr className="partitionStyle" />
         <div>
           <ul className="choreCompleteList">
-            {this.props.chores.map((chore, i) => <Chore {...chore} action='approve' key={i} approveChoresRequest={this.props.approveChoresRequest} />)}
+            {this.props.chores.map((child, i) =>
+            (child.chores.map((chore, j) => <Chore {...chore} name={child.name} action='approve' key={j} approveChoresRequest={this.props.approveChoresRequest} />) ))}
           </ul>
         </div>
       </div>
@@ -51,7 +51,7 @@ class ApproveChoresForm extends Component {
 const mapStateToProps = state => {
   return {
     errorMessage: state.chores.errorMessage,
-    chores: state.user.info.children[0].choresForApproval
+    chores: state.chores.updatedChores
   };
 };
 

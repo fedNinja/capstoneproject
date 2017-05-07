@@ -16,7 +16,7 @@ class Chore extends Component {
   };
 
   onClick = (e) => {
-    e.preventdefault()
+    e.preventDefault();
     this.setState({
       isChecked: !this.state.isChecked
     });
@@ -33,6 +33,8 @@ class Chore extends Component {
   render() {
     console.log("props:");
     console.log(this.props);
+    const {name} = this.props;
+    console.log(name);
     return (
       <div>
         <hr className="partitionStyle" />
@@ -45,6 +47,9 @@ class Chore extends Component {
               checked={this.state.isChecked}
               className="checkAlign"
             />
+            <p className="eleAlign choreAlign">
+              {name?name:null}
+            </p>
             <img
               className="imgStyle eleAlign"
               alt="choreImage"

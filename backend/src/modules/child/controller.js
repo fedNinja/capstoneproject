@@ -15,7 +15,7 @@ export const addChild = async(req,res) => {
 
 export const getChilds = async (req, res) => {
 	try{
-		return res.status(200).json({ childs: await Child.find({ parent:req.params.parent }) });
+		return res.status(200).json({ childs: await Child.find({ parent:req.params.parent }).populate("choresForApproval") });
 		} catch(e) {
 		return res.status(e.status).json({ error: true, message: 'Error with to get child data' });
 	}

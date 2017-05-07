@@ -3,6 +3,7 @@ import { CHORE_SUCCESS, CHORE_ERROR } from '../actions/listChores';
 import { INBOX_SUCCESS, INBOX_ERROR } from '../actions/getApprovalInboxAction';
 import { RECIEVE_DATA } from '../actions/addChoresAction';
 
+
 const initialState = {
   category: '',
   chores: [],
@@ -10,7 +11,10 @@ const initialState = {
   errorMessage: '',
 };
 
+
 export default function reducer(state = initialState, action) {
+  console.log("action is ");
+  console.log(action);
   switch (action.type) {
     case 'Mealtime_Chores':
     case 'Household_Chores':
@@ -28,7 +32,7 @@ export default function reducer(state = initialState, action) {
     case RECIEVE_DATA: {
       return {
         ...state,
-        updatedChore: action.chores,
+        updatedChores: action.payload,
       };
     }
     case CHORE_SUCCESS:

@@ -51,17 +51,13 @@ export function addkid(args) {
         email: args.email,
       };
       const uData = await User.signup(argtemp);
-      console.log(uData);
       const argsRevised = args;
       argsRevised.userId = uData.user.id;
-      console.log(argsRevised);
       const data = await Child.addChild(argsRevised);
       //const chores = await Chore.getChores();
       const kids = await Child.getChildren(localStorage.getItem('userid'));
       data.children = kids.childs;
       await dispatch(getChildren(kids.childs));
-      console.log('data is: ');
-      console.log(data);
       await dispatch({ type: ADD_CHILDREN_SUCCESS, child: data.child });
       browserHistory.push('/home');
     } catch (e) {

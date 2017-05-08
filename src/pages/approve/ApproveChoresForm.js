@@ -8,8 +8,6 @@ import Chore from './Chore';
 
 class ApproveChoresForm extends Component {
   render() {
-    console.log("chores are ");
-    console.log(this.props.chores);
     return (
       <div className="centerAlign">
         <h3>Approval Inbox</h3>

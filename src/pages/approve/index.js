@@ -7,8 +7,6 @@ import { approveChoresRequest } from '../../actions/approveChoresAction';
 
 class ApproveRejectPage extends Component {
   render() {
-    console.log("Debugging mode");
-    console.log({ approveChoresRequest });
     return (
       <div>
         <ApproveChoresForm approveChoresRequest={this.props.approveChoresRequest} />

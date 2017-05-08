@@ -64,13 +64,10 @@ export function login(args) {
         const assignedChores = await Child.getAssignedChores(
           data.user.userName,
         );
-        console.log("assignedChores", assignedChores);
         data.assignedChores = assignedChores.childs[0].assignedChores;
         const chores = await axios.get('/chores');
-        console.log(chores);
         data.chores = chores.data.chores;
         await dispatch(loginSuccess(data));
-        console.log(data);
         browserHistory.push('/completechore');
       }
     } catch (e) {
@@ -100,7 +97,6 @@ export function signup(args) {
     return axios
       .post('/user/signup', args)
       .then(res => {
-        console.log(res.data);
         localStorage.setItem(userid, res.data.user.id);
         localStorage.setItem(username, res.data.user.userName);
         localStorage.setItem(email, res.data.user.email);

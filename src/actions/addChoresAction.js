@@ -10,7 +10,6 @@ const RecieveData = chores => {
 
 export function addChoresRequest(category) {
   return dispatch => {
-    console.log(`Inside client, ${category}`);
     return axios
       .get('/chorecategory/' + category)
       .then(res => {
@@ -21,13 +20,10 @@ export function addChoresRequest(category) {
 }
 
 export function assignChoreRequest(childId, chore) {
-  console.log(childId);
-  console.log(chore);
   return dispatch => {
     return axios
       .patch('/assignChores/' + childId, chore)
       .then(res => {
-        console.log(`Inside res ${res}`);
         dispatch(RecieveData(res.data));
       })
       .catch(err => dispatch({ type: 'CHORES_ERROR', payload: err }));

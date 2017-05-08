@@ -46,3 +46,15 @@
 .rejBtnStyle {
   background-color: #ff0000;
 }
+
+.listCompleteStyle {
+    list-style-type: none;
+    font-size: 20px;
+    height: 75px;
+    padding: 10px;
+}
+
+.choreApproveList {
+  margin: 0 auto;
+  padding: 0;
+}

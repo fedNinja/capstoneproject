@@ -34,7 +34,7 @@ export function getApprovalInboxRequest() {
       console.log(children);
       const choresForApproval = [];
       children.childs.map((child) => (
-        choresForApproval.push({ name: child.userName, chores: child.choresForApproval })
+        choresForApproval.push({ name: child.userName, childId: child._id, chores: child.choresForApproval })
       ));
       console.log("After getting chores for approval");
       console.log(choresForApproval);

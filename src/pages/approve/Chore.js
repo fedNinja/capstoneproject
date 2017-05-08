@@ -18,11 +18,7 @@ class Chore extends Component {
 
   onClick = (e) => {
     e.preventDefault();
-    if (this.props.action === 'done') this.props.completeChoresRequest(this.state);
-    if (this.props.action === 'approve') this.props.approveChoresRequest(this.state);
-    this.setState({
-      isChecked: !this.state.isChecked
-    });
+    this.props.approveChoresRequest(this.state);
   }
 
   _handleCheck = () => {

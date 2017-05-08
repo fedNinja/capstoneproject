@@ -34,7 +34,7 @@ export const assignChores = function(req, res) {
   console.log(req.body);
 	const childId = req.params.childId;
 	const _id = req.body._id;
-	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: _id}}, { new: true}, function(err, obj){
+	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: _id}}, { new: true}, function (err, obj){
       if(err){
         res.status(500).send(err);
       }

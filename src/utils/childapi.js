@@ -53,6 +53,7 @@ class ChildApi {
     }
   }
 
+
   async deleteAssignedChore(args) {
     console.log('Inside chore api utils');
     try {
@@ -75,6 +76,17 @@ class ChildApi {
     }
   }
 
+  async updateAllowance(args) {
+    console.log('Updating the allowance of a child');
+    try {
+      const { data } = await axios.put('/updateAllowance', args);
+      return data;
+    } catch (e) {
+      return e;
+    }
+  }
+
 }
+
 
 export const Child = new ChildApi();

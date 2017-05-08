@@ -1,7 +1,7 @@
-import axios from 'axios';
+
 import { browserHistory } from 'react-router';
 
-import { Child } from '../utils/childapi';
+import { Chore } from '../utils/choreapi';
 
 export const APPROVE_SUCCESS = 'APPROVE_SUCCESS';
 export const APPROVE_ERROR = 'APPROVE_ERROR';
@@ -20,14 +20,15 @@ function approveError(payload) {
   };
 }
 
-export function approveChores(args) {
-  console.log(args);
+export function approveChoresRequest(args) {
+  console.log("Inside approve chore request", args.choreId);
   return async dispatch => {
     try {
-      const data = await Child.approveChores(args);
-      console.log(data);
-      await dispatch(approveSuccess(data));
-      browserHistory.push('/home');
+      console.log("inside try...");
+      const chore = await Chore.getChoreById(args.choreId);
+      console.log(chore);
+      await dispatch(approveSuccess(chore));
+      //browserHistory.push('/home');
     } catch (e) {
       dispatch(approveError(e));
     }

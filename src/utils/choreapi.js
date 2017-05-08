@@ -18,6 +18,8 @@ class ChoreApi {
 
   async getChoreById(args) {
     try {
+      console.log("Inside the getChoreById");
+      console.log(args);
       const { data } = await axios.get(`${this.path}/${args}`);
       return data;
     } catch (e) {

@@ -22,8 +22,7 @@ class CompleteChoresForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    assignedChores: state.user.info.assignedChores,
-    chores: state.user.info.chores,
+    assignedChores: state.chores.updatedChores.assignedChores,
     errorMessage: state.chores.errorMessage
   };
 };

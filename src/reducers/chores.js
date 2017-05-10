@@ -2,7 +2,7 @@ import { CHORE_COMPLETED_SUCCESS, CHORE_COMPLETED_ERROR } from '../actions/compl
 import { CHORE_SUCCESS, CHORE_ERROR } from '../actions/listChores';
 import { INBOX_SUCCESS, INBOX_ERROR } from '../actions/getApprovalInboxAction';
 import { RECIEVE_DATA } from '../actions/addChoresAction';
-
+import { ASSIGNED_CHORE_SUCCESS, ASSIGNED_CHORE_ERROR } from '../actions/getAssignedChoresAction'
 
 const initialState = {
   category: '',
@@ -29,6 +29,7 @@ export default function reducer(state = initialState, action) {
       };
     }
     case INBOX_SUCCESS:
+    case ASSIGNED_CHORE_SUCCESS:
     case RECIEVE_DATA: {
       return {
         ...state,
@@ -43,6 +44,7 @@ export default function reducer(state = initialState, action) {
       };
     case INBOX_ERROR:
     case CHORE_ERROR:
+    case ASSIGNED_CHORE_ERROR:
     case CHORE_COMPLETED_ERROR:
       return {
         ...state,

@@ -22,6 +22,8 @@ export const userid = 'userid';
 export const username = 'username';
 export const token = 'token';
 export const email = 'email';
+export const role = 'role';
+export const allowance = 'allowance';
 
 /**
 |--------------------------------------------------
@@ -52,6 +54,7 @@ export function login(args) {
       localStorage.setItem(userid, data.user.id);
       localStorage.setItem(username, data.user.userName);
       localStorage.setItem(email, data.user.email);
+      localStorage.setItem(role, data.user.role);
       localStorage.setItem(token, data.token);
       setAuthToken(data.token);
       if (data.user.role == 'parent') {
@@ -64,11 +67,14 @@ export function login(args) {
         const assignedChores = await Child.getAssignedChores(
           data.user.userName,
         );
-        data.assignedChores = assignedChores.childs[0].assignedChores;
-        const chores = await axios.get('/chores');
-        data.chores = chores.data.chores;
-        await dispatch(loginSuccess(data));
-        browserHistory.push('/completechore');
+        let kidAllowance;
+        if(assignedChores.childs[0].allowance) {
+          kidAllowance = '$'+assignedChores.childs[0].allowance;
+        } else {
+          kidAllowance = '$0';
+        }
+        localStorage.setItem(allowance, kidAllowance);
+        browserHistory.push('/kidhome');
       }
     } catch (e) {
       dispatch(loginError(e));

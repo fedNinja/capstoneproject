@@ -12,6 +12,7 @@ class Chore extends Component {
   state = {
     id: localStorage.getItem('userid'),
     childId:this.props.childId,
+    allowance:this.props.all,
     choreId: this.props._id,
     isChecked: false
   };

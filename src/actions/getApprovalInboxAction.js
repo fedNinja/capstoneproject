@@ -32,8 +32,9 @@ export function getApprovalInboxRequest() {
     try {
       const children = await Child.getChildren(localStorage.getItem('userid'));
       const choresForApproval = [];
+      console.log(children);
       children.childs.map((child) => (
-        choresForApproval.push({ name: child.userName, childId: child._id, chores: child.choresForApproval })
+        choresForApproval.push({ name: child.userName, childId: child._id, allowance: child.allowance, chores: child.choresForApproval })
       ));
       //await dispatch(getChoresForApproval(children.childs[0].choresForApproval))
       await dispatch(inboxSuccess(choresForApproval));

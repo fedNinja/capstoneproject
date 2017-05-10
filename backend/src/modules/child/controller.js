@@ -103,10 +103,10 @@ export const deleteById = function(req, res) {
 }
 
 export const deleteChoreById = function(req, res) {
-	const assignedChoresId = req.params.assignedChores;
+	const assignedChoreId = req.params.assignedChoreId;
   console.log("Inside the delete chore request");
 	Child
-		.find({ userId: req.params.id, assignedChores: { $all:[[assignedChoresId]] } })
+		.find({ _id: req.params.id, assignedChores: { $all:[[assignedChoreId]] } })
 		.exec()
 		.then((chore) => {
 			res.status(201).json(chore);
@@ -117,10 +117,10 @@ export const deleteChoreById = function(req, res) {
 }
 
 export const deleteChoreForApprovalById = function(req, res) {
-  const choresForApprovalId = req.params.choresForApproval;
-  console.log("Inside the delete chore request");
+  const choreForApprovalId = req.params.choreForApproval;
+  console.log("Inside the delete chore for approval request");
 	Child
-		.find({ userId: req.params.id, choresForApproval: { $all:[[choresForApprovalId]] } })
+		.find({ _id: req.params.id, choresForApproval: { $all:[[choreForApprovalId]] } })
 		.exec()
 		.then((chore) => {
 			res.status(201).json(chore);
@@ -133,9 +133,12 @@ export const deleteChoreForApprovalById = function(req, res) {
 export const updateAllowance = function(req, res) {
 	const childId = req.body.childId;
 	const allowance = Number(req.body.allowance);
-	Child.findOneAndUpdate({ '_id': childId }, { $set: { allowance }}, { upsert: false }, function(err){
+	Child.findOneAndUpdate({ '_id': childId }, { $set: { allowance }}, { upsert: false }, function(err, obj){
       if(err){
         res.status(500).send(err);
+      }
+      else{
+        res.status(200).json(obj);
       }
     });
 }

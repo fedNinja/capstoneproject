@@ -8,22 +8,26 @@ import './marquee.css';
 class NavigationBar extends Component {
   logout(e) {
     e.preventDefault();
+    console.log("Inside logout");
     localStorage.clear();
     browserHistory.push('/');
   }
 
   render() {
+    console.log("localStorage is ");
+    console.log(localStorage);
     return (
       <div className="App-header">
         <div className="row">
           <div className="col appLogo">
-            <Link to="/">Gullak</Link>
+            {localStorage.length > 0
+              ? localStorage.role == "parent"
+                ? <Link to="/home">Gullak</Link>
+                : <Link to="/kidhome">Gullak</Link>
+              : <Link to="/">Gullak</Link>}
           </div>
           <div className="col">
             <ul className="headerList headerJustify">
-              <a className="hashLink" href="#assign"><li>Assign</li></a>
-              <a className="hashLink" href="#track"><li>Track</li></a>
-              <a className="hashLink" href="#reward"><li>Reward</li></a>
               <li>
                 {localStorage.length > 0
                   ? `Hello ${localStorage.getItem('username')}`
@@ -49,4 +53,6 @@ class NavigationBar extends Component {
     );
   }
 }
+
+
 export default NavigationBar;

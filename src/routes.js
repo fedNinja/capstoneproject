@@ -10,6 +10,7 @@ import HomePage from './pages/home';
 import AddKidPage from './pages/kid';
 import ApproveRejectPage from './pages/approve';
 import CompleteChoresPage from './pages/completechores';
+import KidHomePage from './pages/kidhome'
 
 export default (
   <Route path="/" component={App}>
@@ -21,5 +22,6 @@ export default (
     <Route path="/addkid" component={AddKidPage} />
     <Route path="/approve" component={ApproveRejectPage} />
     <Route path="/completechore" component={CompleteChoresPage} />
+    <Route path="/kidhome" component={KidHomePage} />
   </Route>
 );

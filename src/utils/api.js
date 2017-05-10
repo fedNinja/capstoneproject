@@ -25,6 +25,7 @@ class UserApi {
       return e;
     }
   }
+
 }
 
 export const User = new UserApi();

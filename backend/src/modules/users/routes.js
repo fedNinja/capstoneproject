@@ -8,5 +8,4 @@ routes.post('/user/signup', UserController.createUser);
 routes.post('/user/login', requireLoginAuth, UserController.loginUser);
 routes.delete('/deleteuser/:id', UserController.deleteById);
 
-
 export default routes;

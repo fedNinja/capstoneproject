@@ -14,7 +14,7 @@ class ApproveChoresForm extends Component {
         <div>
           <ul className="choreApproveList">
             {this.props.chores.map((child) =>
-            (child.chores.map((chore, j) => <Chore {...chore} name={child.name} childId={child.childId} action='approve' key={j} approveChoresRequest={this.props.approveChoresRequest} />) ))}
+            (child.chores.map((chore, j) => <Chore {...chore} name={child.name} childId={child.childId} all={child.allowance} action='approve' key={j} approveChoresRequest={this.props.approveChoresRequest} />) ))}
           </ul>
         </div>
       </div>

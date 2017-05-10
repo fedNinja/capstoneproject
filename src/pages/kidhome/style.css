@@ -99,3 +99,15 @@
 .textAlign {
   padding-top:40px;
 }
+
+.choresBtn {
+  display: inline-block;
+  width: 100px;
+  height: 25px;
+  backgound-color: blue;
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: 0;
+  background-color: #0080ff;
+}

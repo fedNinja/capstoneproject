@@ -28,8 +28,8 @@ render() {
           </p>
           <p className="dataUser">Email: {localStorage.getItem('email')}</p>
           <p className="dataUser">Allowance: {localStorage.getItem('allowance')}</p>
-          <button onClick={e => this.onCompleteClick(e)}>Complete Chores</button>
-          <button onClick={e => this.onAssignClick(e)}>Assign Chores</button>
+          <button onClick={e => this.onCompleteClick(e)} className="choresBtn">Complete Chores</button>
+          <button onClick={e => this.onAssignClick(e)}  className="choresBtn">Assign Chores</button>
         </div>
       </div>
     );

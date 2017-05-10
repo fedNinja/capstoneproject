@@ -14,8 +14,6 @@ onClick = (e) => {
 
 render() {
     const { children } = this.props;
-    console.log(localStorage.getItem('username'));
-    console.log(children);
     return (
       <div className="homeDiv">
         <div className="avatar" />
@@ -24,7 +22,9 @@ render() {
             User name: {localStorage.getItem('username')}
           </p>
           <p className="dataUser">Email: {localStorage.getItem('email')}</p>
-          <button onClick={e => this.onClick(e)}>Approval Inbox</button>
+        </div>
+        <div className="approveChores">
+          <button onClick={e => this.onClick(e)} className='ApproveBtn'>Approval Inbox</button>
         </div>
         <ul className="listKids">
           {children.data.map((child, i) => (

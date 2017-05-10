@@ -2,13 +2,11 @@ import Child from './model';
 import mongoose from 'mongoose';
 
 export const addChild = async(req,res) => {
-  console.log("Inside add child");
 	const{ parent, userId, userName, password, age } = req.body;
 	const newChild = new Child({ parent, userId, userName, password, age });
 	try{
 	return res.status(201).json({ child: await newChild.save() });
 	}catch(e) {
-    console.log("Somethig is terribly wrong");
 	return res.status(400).json({ error: true, message: e });
  }
 }
@@ -30,8 +28,6 @@ export const getChildById = async (req, res) => {
 }
 
 export const assignChores = function(req, res) {
-  console.log("hello");
-  console.log(req.body);
 	const childId = req.params.childId;
 	const _id = req.body._id;
 	Child.findOneAndUpdate({ '_id':childId }, { $push: { assignedChores: _id}}, { new: true}, function (err, obj){
@@ -39,18 +35,14 @@ export const assignChores = function(req, res) {
         res.status(500).send(err);
       }
 			else{
-        console.log(obj);
 				res.status(201).json(obj.assignedChores);
 			}
     });
 }
 
 export const choresToApprove = function(req, res) {
-  console.log(req);
   const userId = req.body.id;
   const choreId = req.body.choreId;
-  console.log(userId);
-  console.log(choreId);
   Child.findOneAndUpdate({ userId }, { $push: { choresForApproval: { $each: [choreId] }}}, { new: true}, function(err, obj){
       if(err){
         res.status(500).send(err);
@@ -80,7 +72,7 @@ export const getChoresForApproval = async (req, res) => {
 export const updateSpending = function(req, res) {
 	const childId = req.body.childId;
 	const spending = Number(req.body.spending);
-	Child.findOneAndUpdate({ '_id':childId }, { $set: { spending: spending }}, { upsert: true }, function(err, obj){
+	Child.findOneAndUpdate({ '_id':childId }, { $set: { spending }}, { upsert: true }, function(err, obj){
       if(err){
         res.status(500).send(err);
       }
@@ -104,7 +96,6 @@ export const deleteById = function(req, res) {
 
 export const deleteChoreById = function(req, res) {
 	const assignedChoreId = req.params.assignedChoreId;
-  console.log("Inside the delete chore request");
 	Child
 		.find({ _id: req.params.id, assignedChores: { $all:[[assignedChoreId]] } })
 		.exec()
@@ -118,7 +109,6 @@ export const deleteChoreById = function(req, res) {
 
 export const deleteChoreForApprovalById = function(req, res) {
   const choreForApprovalId = req.params.choreForApproval;
-  console.log("Inside the delete chore for approval request");
 	Child
 		.find({ _id: req.params.id, choresForApproval: { $all:[[choreForApprovalId]] } })
 		.exec()

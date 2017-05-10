@@ -29,10 +29,7 @@ class Chore extends Component {
   };
 
   render() {
-    console.log("props:");
-    console.log(this.props);
     const {name} = this.props;
-    console.log(name);
     return (
       <div>
         <hr className="partitionStyle" />
